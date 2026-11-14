@@ -384,6 +384,7 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
       <nav aria-label="Main navigation" style="display: flex; align-items: center; gap: 22px; flex: 1; flex-wrap: wrap; font-size: 14px;">
         <a href="#features" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Features</a>
         <a href="#agents" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Agents</a>
+        <a href="#team" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Teams</a>
         <a href="#machines" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Machines</a>
         <a href="#mobile" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Mobile</a>
         <a href="#keys" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Keyboard</a>
@@ -411,7 +412,7 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
       </div>
       <div style="position: relative; border-radius: 16px; overflow: hidden; background: #121314; box-shadow: 0 0 0 1px rgba(243,245,251,0.1), 0 40px 120px rgba(124,58,237,0.16), 0 30px 80px rgba(0,0,0,0.6);">
         <div ref="{{ heroRef }}" style="{{ heroStage }}">
-          <iframe sc-camel-src="{{ heroSrc }}" title="Capu desktop, live" loading="lazy" style="{{ heroFrame }}"></iframe>
+          <iframe sc-camel-src="{{ heroSrc }}" scrolling="no" title="Capu desktop, live" loading="lazy" style="{{ heroFrame }}"></iframe>
         </div>
       </div>
     </div>
@@ -466,6 +467,59 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
     </div>
   </section>
 
+  <section id="team" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 130px 24px 20px; display: flex; align-items: center; gap: 56px; flex-wrap: wrap-reverse;">
+    <div style="flex: 1 1 540px; min-width: 0; border-radius: 16px; overflow: hidden; background: #141518; box-shadow: 0 0 0 1px rgba(243,245,251,0.1), 0 30px 80px rgba(0,0,0,0.5);">
+      <div style="display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid rgba(243,245,251,0.07);">
+        <span style="font-size: 14px; font-weight: 650; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Rotate JWT signing key</span>
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11.5px; padding: 3px 8px; border-radius: 6px; background: rgba(134,239,172,0.1); color: #86EFAC;">jwt-rotation</span>
+      </div>
+      <div style="display: flex; gap: 4px; padding: 8px 10px 0; border-bottom: 1px solid rgba(243,245,251,0.07); overflow-x: auto;">
+        <sc-for list="{{ team }}" as="a" hint-placeholder-count="3">
+          <button type="button" class="team-button" sc-camel-on-click="{{ a.pick }}" aria-pressed="{{ a.selected }}" style="{{ a.tab }}"><img sc-camel-src="{{ a.icon }}" alt="" width="16" height="16" style="display: block;"><span style="font-weight: 600;">{{ a.role }}</span><span style="color: rgba(243,245,251,0.5);">{{ a.agent }}</span><span style="{{ a.dot }}"></span></button>
+        </sc-for>
+        <div style="flex: none; height: 34px; padding: 0 10px; display: flex; align-items: center; font-size: 13px; color: rgba(243,245,251,0.5);">+ Add agent</div>
+      </div>
+      <div style="padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 12px; min-height: 230px;">
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: rgba(243,245,251,0.55);"><span style="{{ teamCur.dot }}"></span><span>{{ teamCur.status }}</span></div>
+        <span style="font-size: 15px; line-height: 1.6; color: rgba(243,245,251,0.9); text-wrap: pretty;">{{ teamCur.msg }}</span>
+        <div style="display: flex; flex-direction: column; gap: 6px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12.5px; color: rgba(243,245,251,0.6);">
+          <sc-for list="{{ teamCur.steps }}" as="s" hint-placeholder-count="2"><span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ s }}</span></sc-for>
+        </div>
+        <div style="margin-top: auto; display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 10px; background: rgba(243,245,251,0.04); font-size: 12.5px; color: rgba(243,245,251,0.65);"><span style="color: #C4B5FD;">↪</span><span>{{ teamCur.handoff }}</span></div>
+      </div>
+    </div>
+    <div style="flex: 1 1 340px; min-width: 0; max-width: 460px; display: flex; flex-direction: column; gap: 16px;">
+      <span style="font-family: 'Gochi Hand', cursive; font-size: 24px; color: #C4B5FD; transform: rotate(-2deg); transform-origin: left; width: max-content; max-width: 100%;">a team in every session</span>
+      <h2 style="margin: 0; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.04; font-weight: 750; letter-spacing: -0.035em; text-wrap: balance;">Several agents, one session, one worktree.</h2>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: rgba(243,245,251,0.74); text-wrap: pretty;">Give each agent a role. One plans, another builds, a third reviews, all on the same branch and files. They hand work to each other and you see every one of them in a tab.</p>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 4px;">
+        <sc-for list="{{ teamPoints }}" as="pt" hint-placeholder-count="3">
+          <div style="display: grid; grid-template-columns: 18px minmax(0,1fr); gap: 10px; font-size: 15px; line-height: 1.5;"><span style="font-size: 13px; font-weight: 800; line-height: 1.7; color: #C4B5FD;">✓</span><span style="color: rgba(243,245,251,0.88); text-wrap: pretty;">{{ pt }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="always" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 130px 24px 20px; display: flex; flex-direction: column; gap: 36px;">
+    <div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px;">
+      <span style="font-family: 'Gochi Hand', cursive; font-size: 24px; color: #86EFAC; transform: rotate(-2deg); transform-origin: left; width: max-content; max-width: 100%;">close it, update it, they keep going</span>
+      <h2 style="margin: 0; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.04; font-weight: 750; letter-spacing: -0.035em; text-wrap: balance;">Quit Capu. Your agents don't notice.</h2>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: rgba(243,245,251,0.74); text-wrap: pretty;">Sessions run in Capu Host, a small background service on each machine, not in the window you're looking at. Close the app, restart for an update or let your laptop sleep while the devbox works. When you come back, every session is right where it is, with nothing lost.</p>
+    </div>
+    <div style="border-radius: 18px; padding: 24px clamp(16px, 3vw, 28px) 20px; background: rgba(243,245,251,0.025); box-shadow: inset 0 0 0 1px rgba(243,245,251,0.07); display: flex; flex-direction: column; gap: 14px; overflow-x: auto;">
+      <div style="display: grid; grid-template-columns: 150px minmax(620px, 1fr); gap: 14px; align-items: center; font-size: 12px; color: rgba(243,245,251,0.5);">
+        <span></span>
+        <div style="position: relative; height: 22px;"><sc-for list="{{ tlMarks }}" as="m" hint-placeholder-count="4"><span style="{{ m.css }}">{{ m.t }}</span></sc-for></div>
+      </div>
+      <sc-for list="{{ tlRows }}" as="r" hint-placeholder-count="4">
+        <div style="display: grid; grid-template-columns: 150px minmax(620px, 1fr); gap: 14px; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 8px; min-width: 0;"><sc-if value="{{ r.hasIcon }}" hint-placeholder-val="{{ true }}"><img sc-camel-src="{{ r.icon }}" alt="" width="16" height="16" style="display: block;"></sc-if><span style="font-size: 13.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ r.t }}</span></div>
+          <div style="position: relative; height: 26px;"><sc-for list="{{ r.segs }}" as="s" hint-placeholder-count="1"><span style="{{ s.css }}">{{ s.t }}</span></sc-for></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
   <div id="features" style="display: flex; flex-direction: column;">
     <sc-for list="{{ features }}" as="f" hint-placeholder-count="5">
       <section id="{{ f.id }}" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 100px 24px 20px;">
@@ -481,26 +535,30 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
             </div>
           </div>
           <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 10px;">
+            <sc-if value="{{ f.isDevice }}" hint-placeholder-val="{{ false }}">
+              <div ref="{{ f.ref }}" style="position: relative; width: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 0;">
+                <sc-for list="{{ devices }}" as="d" hint-placeholder-count="2">
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+                    <div style="{{ d.box }}"><iframe sc-camel-src="{{ d.src }}" title="{{ d.t }}" loading="lazy" scrolling="no" allowtransparency="true" style="{{ d.frame }}"></iframe></div>
+                    <span style="font-size: 12.5px; font-weight: 500; color: rgba(243,245,251,0.55);">{{ d.t }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ f.isWin }}" hint-placeholder-val="{{ true }}">
             <div style="border-radius: 14px; overflow: hidden; background: #121314; box-shadow: 0 0 0 1px rgba(243,245,251,0.1), 0 30px 80px rgba(0,0,0,0.5);">
+              <sc-if value="{{ f.chrome }}" hint-placeholder-val="{{ true }}">
               <div style="height: 34px; display: flex; align-items: center; gap: 7px; padding: 0 12px; background: #1A1B1E; border-bottom: 1px solid rgba(243,245,251,0.06);">
                 <span style="width: 10px; height: 10px; border-radius: 999px; background: #FF5F57;"></span><span style="width: 10px; height: 10px; border-radius: 999px; background: #FEBC2E;"></span><span style="width: 10px; height: 10px; border-radius: 999px; background: #28C840;"></span>
                 <span style="flex: 1; text-align: center; font-size: 12px; color: rgba(243,245,251,0.5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ f.win }}</span>
-                <span style="{{ f.liveCss }}">{{ f.liveLbl }}</span>
+                <span style="width: 46px;"></span>
               </div>
+              </sc-if>
               <div ref="{{ f.ref }}" style="{{ f.stage }}">
-                <sc-if value="{{ f.playing }}" hint-placeholder-val="{{ false }}">
-                  <iframe sc-camel-src="{{ f.src }}" title="{{ f.t }}" style="{{ f.frame }}"></iframe>
-                </sc-if>
-                <sc-if value="{{ f.poster }}" hint-placeholder-val="{{ true }}">
-                  <button type="button" class="demo-play" aria-label="{{ f.t }}" sc-camel-on-click="{{ f.play }}" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; background: linear-gradient(180deg, rgba(14,15,16,0) 40%, rgba(14,15,16,0.55) 100%);" style-hover="background: linear-gradient(180deg, rgba(14,15,16,0.1) 0%, rgba(14,15,16,0.65) 100%);">
-                    <div style="display: flex; align-items: center; gap: 12px; height: 52px; padding: 0 22px 0 8px; border-radius: 999px; background: rgba(14,15,16,0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 0 0 1px rgba(243,245,251,0.16), 0 12px 30px rgba(0,0,0,0.5);">
-                      <span style="width: 38px; height: 38px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: #F3F5FB; color: #0B0B0D;"><svg width="13" height="14" sc-camel-view-box="0 0 13 14" fill="currentColor"><path d="M2 1.2v11.6c0 .6.7 1 1.2.6l9-5.8c.5-.3.5-1 0-1.3l-9-5.8C2.7.2 2 .6 2 1.2z"></path></svg></span>
-                      <div style="display: flex; flex-direction: column; gap: 1px;"><span style="font-size: 14.5px; font-weight: 600;">Play it live</span><span style="font-size: 12px; color: rgba(243,245,251,0.6);">{{ f.hint }}</span></div>
-                    </div>
-                  </button>
-                </sc-if>
+                  <iframe sc-camel-src="{{ f.src }}" title="{{ f.t }}" loading="lazy" scrolling="no" style="{{ f.frame }}"></iframe>
               </div>
             </div>
+            </sc-if>
           </div>
         </div>
       </section>
@@ -605,31 +663,31 @@ const FEATURES = [
   { id: "canvas", note: "one canvas, your way", c: "#C4B5FD", t: "Every agent and every view, side by side.", win: "Capu · capu-design / dark-mode-tokens",
     d: "The conversation, plan, todos, changes, checks and review are blocks. Drag them into splits, stack them as tabs or save a layout, then switch sessions without losing it.",
     points: ["Run Claude Code and Codex in the same session, on the same worktree", "Drag any block to split right, split down or stack as a tab", "⌘1–9 jumps to a block; nothing needs the mouse"],
-    poster: RES("shotCanvas", "screenshots/site-canvas.jpg"), src: RES("appCanvas", "Capu.dc.html"), hint: "The full desktop app · click around", h: 800 },
+    src: RES("appCanvas", "Capu.dc.html"), crop: [1280, 800, 0, 0, 1280, 800], chrome: true },
   { id: "live", note: "answer without switching apps", c: "#FCD34D", t: "Your agents wait in the notch, not in a tab.", win: "Capu Live Activity · MacBook Pro",
     d: "When an agent needs a yes, a choice or a reply, it shows up at the top of your screen. Press 1, 2 or 3 and keep working; the answer goes straight to the agent.",
     points: ["Works with the notch and the new Dynamic Island", "J/K to move between requests, Esc to undo for 2 seconds", "Every machine in one inbox: your Mac, a devbox, a VPS"],
-    poster: RES("shotLive", "screenshots/site-live.jpg"), src: RES("appLive", "Capu Live Activity.dc.html"), hint: "Hover the notch, answer a request", h: 800 },
+    src: RES("appLive", "Capu Live Activity.dc.html?bare=1"), crop: [1284, 804, 22, 22, 1240, 760], chrome: false },
   { id: "edge", note: "or keep it on the edge", c: "#86EFAC", t: "A quiet rail that only speaks up when it matters.", win: "Capu Edge",
     d: "Prefer the side of the screen? The Edge rail shows what's waiting, then what's working, and folds idle sessions into one number. Hide it completely and it comes back only when an agent asks something.",
     points: ["Ask out loud: “Anything waiting on me?”, “Is anything broken?”", "⌃⌥H hides Capu until an agent needs you", "Answer the oldest request from anywhere with ⌃⌥Space"],
-    poster: RES("shotEdge", "screenshots/site-edge.jpg"), src: RES("appEdge", "Capu Edge v2.dc.html"), hint: "Try Hidden and Ask Capu", h: 900 },
+    src: RES("appEdge", "Capu Edge v2.dc.html?bare=1"), crop: [1296, 720, 28, 40, 1240, 640], chrome: false },
   { id: "reviews", note: "reviews, with a reviewer", c: "#93C5FD", t: "Review pull requests with an agent at your side.", win: "Capu · Reviews",
     d: "Your review queue is sorted by what you can act on. Start a review and Capu walks you through the files in order, explains changes when you ask and drafts comments you can edit before submitting.",
     points: ["Waiting on you, in progress and your own PRs, synced from GitHub", "A step-by-step view with inline comments", "Ask the reviewer follow-up questions before you approve"],
-    poster: RES("shotReviews", "screenshots/site-reviews.jpg"), src: RES("appReviews", "Capu Reviews List.dc.html"), hint: "Open the review queue", h: 800 },
+    src: RES("appReviews", "Capu Reviews List.dc.html"), crop: [1364, 904, 22, 22, 1320, 860], chrome: true },
   { id: "mobile", note: "away from the desk", c: "#FDBA9A", t: "Your sessions, in your pocket.", win: "Capu for iPhone and iPhone Duo",
     d: "Pair your iPhone and every session comes with you. The conversation fills the screen, and changes, checks and todos sit as pills above the composer. Unfold an iPhone Duo and they become columns.",
     points: ["Approve and reply from the Lock Screen", "Thumb-reach controls on the folded Duo", "Switch between chat and the agent's real terminal"],
-    poster: RES("shotMobile", "screenshots/site-mobile.jpg"), src: RES("appMobile", "Capu iPhone and Duo.dc.html"), hint: "iPhone, Duo folded and open", h: 860 },
+    src: "", crop: [1, 1, 0, 0, 1, 1], chrome: false },
   { id: "memories", note: "it learns how you work", c: "#F0ABFC", t: "Tell it once. Every agent remembers.", win: "Capu · Memories",
     d: "Capu notices your preferences, like commit style, test commands and things to never touch, and saves them as memories. Review what it learned each week, keep what's right and share it with every project.",
     points: ["Per-project or Everywhere, shared by every agent", "A weekly review of new memories", "Fix or forget anything with one click"],
-    poster: RES("shotMemories", "screenshots/site-memories.jpg"), src: RES("appMemories", "Capu Memories.dc.html"), hint: "Browse what Capu learned", h: 800 },
+    src: RES("appMemories", "Capu Memories.dc.html"), crop: [1364, 904, 22, 22, 1320, 860], chrome: true },
   { id: "analytics", note: "know what it costs", c: "#5EEAD4", t: "See where the tokens go, and how to save them.", win: "Capu · Analytics",
     d: "Tokens, spend and agent time across every agent, project and machine. Capu points out the waste, such as a bloated AGENTS.md or an expensive model on simple tasks, and can fix it for you.",
     points: ["Breakdowns by activity, agent and day", "Concrete ways to save, with the tokens each one avoids", "Apply a fix yourself or hand it to an agent"],
-    poster: RES("shotAnalytics", "screenshots/site-analytics.jpg"), src: RES("appAnalytics", "Capu Analytics.dc.html"), hint: "Explore the analytics", h: 860 }
+    src: RES("appAnalytics", "Capu Analytics.dc.html?bare=1"), crop: [1504, 900, 12, 14, 1480, 862], chrome: false }
 ];
 class Component extends DCLogic {
   state = { w: {}, playing: {} };
@@ -656,14 +714,36 @@ class Component extends DCLogic {
           row: "display:flex;align-items:center;gap:56px;flex-wrap:wrap;" + (i % 2 ? "flex-direction:row-reverse;" : ""),
           noteCss: "font-family:'Gochi Hand',cursive;font-size:24px;line-height:1;color:" + f.c + ";transform:rotate(-2deg);transform-origin:left;width:max-content;max-width:100%;",
           tick: "font-size:13px;font-weight:800;line-height:1.7;color:" + f.c + ";",
-          ref: this.refFor(f.id), playing: on, poster: !on,
-          stage: "position:relative;width:100%;aspect-ratio:" + BASE + " / " + f.h + ";overflow:hidden;background:#121314 url('" + f.poster + "') top center / cover no-repeat;",
-          frame: this.frame(f.id, f.h),
+          ref: this.refFor(f.id), isDevice: f.id === "mobile", isWin: f.id !== "mobile",
+          stage: "position:relative;width:100%;aspect-ratio:" + f.crop[4] + " / " + f.crop[5] + ";overflow:hidden;background:#121314;",
+          frame: (() => { const [iw, ih, x, y, cw] = f.crop, sc = (this.state.w[f.id] || cw) / cw; return "position:absolute;left:0;top:0;width:" + iw + "px;height:" + ih + "px;border:0;background:#121314;transform:scale(" + sc + ") translate(" + (-x) + "px," + (-y) + "px);transform-origin:0 0;"; })(),
           play: () => this.setState(s => ({ playing: Object.assign({}, s.playing, { [f.id]: true }) })),
           liveLbl: on ? "● Live" : "Preview",
           liveCss: "flex:none;font-size:11px;font-weight:600;letter-spacing:.02em;color:" + (on ? "#86EFAC" : "rgba(243,245,251,0.4)") + ";"
         });
       }),
+      ...(() => {
+        const T = [
+          { role: "Planner", agent: "Claude", id: "icClaude", p: "icons/claude-code.svg", c: "#4ADE80", status: "Done · 4 min", msg: "Plan: add a second signing key, accept both for a 24 h grace window, move bots to the new key, then retire the old one.", steps: ["✓ Read JwtFilter.java, openmetadata-ops.sh", "✓ Wrote plan.md · 7 steps"], handoff: "Handed steps 1–5 to Builder · Codex" },
+          { role: "Builder", agent: "Codex", id: "icCodex", p: "icons/codex.svg", c: "#60A5FA", status: "Working · step 3 of 5", msg: "Adding the kid header and dual-key validation. Tests for the grace window are next.", steps: ["✓ Edit JwtKeyRotation.java +214", "✓ Bash mvn test · 11/12 passed", "● Edit JwtFilterTest.java"], handoff: "Will hand the diff to Reviewer · Gemini when tests pass" },
+          { role: "Reviewer", agent: "Gemini", id: "icGemini", p: "icons/gemini.svg", c: "rgba(243,245,251,0.35)", status: "Waiting for Builder", msg: "I'll review the diff for security issues once the Builder finishes: key storage, token expiry and the admin API's role check.", steps: ["○ Review JwtKeyRotation.java", "○ Check ops-role gating"], handoff: "Sends comments back to Builder, or to you if it needs a decision" }
+        ];
+        const cur = T[this.state.team ?? 1];
+        return {
+          team: T.map((a, i) => ({ role: a.role, agent: a.agent, selected: (this.state.team ?? 1) === i, icon: RES(a.id, a.p), pick: () => this.setState({ team: i }),
+            dot: "display:block;width:7px;height:7px;border-radius:999px;background:" + a.c + ";",
+            tab: "flex:none;height:34px;padding:0 12px;border-radius:9px 9px 0 0;display:flex;align-items:center;gap:7px;cursor:pointer;font-size:13px;" + ((this.state.team ?? 1) === i ? "background:rgba(243,245,251,0.07);box-shadow:inset 0 -2px 0 #C4B5FD;" : "") })),
+          teamCur: { status: cur.status, msg: cur.msg, steps: cur.steps, handoff: cur.handoff, dot: "display:block;width:8px;height:8px;border-radius:999px;background:" + cur.c + ";" },
+          teamPoints: ["Mix agents freely: Claude plans, Codex builds, Gemini reviews", "Hand off with one click; the next agent gets the context", "Each agent has a key (⌥1–9) and its own status"],
+          tlMarks: [["9:00", 0], ["Quit Capu · 10:12", 30], ["Update to 0.4 · 11:40", 67], ["Back · 12:05", 92]].map(([t, x]) => ({ t, css: "position:absolute;left:" + x + "%;top:0;transform:translateX(" + (x > 80 ? "-100%" : x ? "-50%" : "0") + ");white-space:nowrap;" })),
+          tlRows: [
+            { t: "Capu app", hasIcon: false, icon: "", segs: [[0, 30, "open", "#C4B5FD"], [30, 62, "closed", null], [62, 72, "update", "#FCD34D"], [72, 92, "closed", null], [92, 100, "open", "#C4B5FD"]] },
+            { t: "Claude · Pricing page", hasIcon: true, icon: RES("icClaude", "icons/claude-code.svg"), segs: [[0, 100, "running the whole time", "#4ADE80"]] },
+            { t: "Codex · Stripe checkout", hasIcon: true, icon: RES("icCodex", "icons/codex.svg"), segs: [[0, 70, "running", "#4ADE80"], [70, 100, "answered on iPhone", "#FCD34D"]] },
+            { t: "Gemini · devbox", hasIcon: true, icon: RES("icGemini", "icons/gemini.svg"), segs: [[8, 100, "running on the devbox", "#4ADE80"]] }
+          ].map(r => Object.assign({}, r, { segs: r.segs.map(([a, b, t, c]) => ({ t, css: "position:absolute;top:0;bottom:0;left:" + a + "%;width:calc(" + (b - a) + "% - 3px);box-sizing:border-box;padding:0 9px;border-radius:7px;display:flex;align-items:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:11.5px;font-weight:600;" + (c ? "background:color-mix(in oklch, " + c + " 22%, transparent);color:" + c + ";box-shadow:inset 0 0 0 1px color-mix(in oklch, " + c + " 40%, transparent);" : "background:repeating-linear-gradient(135deg, rgba(243,245,251,0.04) 0 6px, transparent 6px 12px);color:rgba(243,245,251,0.4);box-shadow:inset 0 0 0 1px rgba(243,245,251,0.07);") })) }))
+        };
+      })(),
       agentPoints: [
         "Uses each agent's own CLI, login and config: nothing to migrate",
         "Mix agents in one session, like Claude to plan and Codex to build",
@@ -687,6 +767,11 @@ class Component extends DCLogic {
         { t: "Start work where it belongs", d: "Pick the machine when you start a session: heavy builds on the devbox, quick fixes on your laptop." },
         { t: "Code stays on its machine", d: "Agents run next to the repo. Capu only syncs session state, so your code never leaves the box it lives on." }
       ],
+      devices: (() => { const D = [["iPhone", "phone", 413, 872], ["iPhone Duo, unfolded", "duoO", 1030, 880]], P = 28, G = 28;
+        const tw = D.reduce((a, d) => a + d[2], 0) + G, w = this.state.w.mobile || 600, s = Math.min(0.62, w / tw);
+        return D.map(([t, k, dw, dh], i) => ({ t, src: RES(k === "phone" ? "appPhone" : "appDuo", "Capu iPhone and Duo.dc.html?device=" + k),
+          box: "position:relative;flex:none;width:" + Math.round(dw * s) + "px;height:" + Math.round(dh * s) + "px;" + (i ? "margin-left:" + Math.round(G * s) + "px;" : "") + "border-radius:" + Math.round(64 * s) + "px;box-shadow:0 40px 90px rgba(0,0,0,0.55);",
+          frame: "position:absolute;left:" + Math.round(-P * s) + "px;top:" + Math.round(-P * s) + "px;width:" + (dw + P * 2) + "px;height:" + (dh + P * 2) + "px;border:0;background:transparent;color-scheme:dark;transform:scale(" + s + ");transform-origin:0 0;" })); })(),
       keys: [
         { keys: ["⌃", "⌥", "Space"], t: "Answer the oldest request", d: "From any app. The request opens where your eyes already are." },
         { keys: ["1", "2", "3"], t: "Pick an answer", d: "Options are numbered the same in the notch, the edge and the app." },

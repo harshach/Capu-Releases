@@ -1,10 +1,10 @@
-.demo-play {
+.team-button {
   border: 0;
-  padding: 0;
-  width: 100%;
+  background: transparent;
   font: inherit;
   color: inherit;
   text-align: left;
+  box-sizing: content-box;
 }
 
 .download-button {
@@ -19,7 +19,7 @@
   outline-offset: 5px;
 }
 
-.demo-play:focus-visible {
+.team-button:focus-visible {
   outline-offset: -5px;
 }
 
