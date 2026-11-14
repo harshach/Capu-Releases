@@ -12,13 +12,6 @@
   padding: 0;
 }
 
-.download-button {
-  border: 0;
-  font-family: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-
 :focus-visible {
   outline: 2px solid #C4B5FD;
   outline-offset: 5px;
@@ -46,51 +39,6 @@
 .skip-link:focus {
   top: 12px;
   color: #0E0F10;
-}
-
-#download-availability {
-  box-sizing: border-box;
-  width: min(440px, calc(100% - 48px));
-  padding: 28px;
-  border: 1px solid rgba(243, 245, 251, 0.16);
-  border-radius: 20px;
-  background: #17151F;
-  color: #F3F5FB;
-  box-shadow: 0 24px 100px #0008;
-}
-
-#download-availability::backdrop {
-  background: #0009;
-  backdrop-filter: blur(8px);
-}
-
-#download-availability h2 {
-  margin: 0 0 12px;
-  font-size: 24px;
-  letter-spacing: -0.025em;
-}
-
-#download-availability p {
-  margin: 0 0 24px;
-  color: #C7C3D3;
-  line-height: 1.6;
-}
-
-.availability-actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  justify-content: space-between;
-}
-
-.availability-actions button {
-  border: 0;
-  border-radius: 999px;
-  padding: 10px 18px;
-  font: inherit;
-  background: #F3F5FB;
-  color: #17151F;
-  cursor: pointer;
 }
 
 .no-script {
