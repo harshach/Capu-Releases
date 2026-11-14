@@ -70,7 +70,7 @@ for identifier in re.findall(r'RES\("([^\"]+)"', html):
 assert page.title and page.h1_count == 1, "The page needs a title and one main heading"
 assert '<html lang="en">' in html, "The page needs a language"
 assert len(feature_ids) == 7, "All seven feature demos must be present"
-assert {"team", "always"} <= page.ids, "The team and background-session sections must be present"
+assert {"team", "always", "workspaces"} <= page.ids, "The team, background-session, and workspace sections must be present"
 assert (ROOT / "CNAME").read_text().strip() == "capu.ai"
 
 demo_resources = {name: path for name, path in resources.items() if name.startswith("app")}
@@ -112,10 +112,30 @@ for (const [index, status] of ['Done · 4 min', 'Working · step 3 of 5', 'Waiti
 }
 assert.deepEqual(component.renderVals().devices.map(device => device.src),
   [window.__resources.appPhone, window.__resources.appDuo]);
+assert.equal(component.renderVals().ws.machine, 'Mac Studio');
+for (const [index, [name, machine, agent, project]] of [
+  ['Marketing', 'Mac Studio', 'Codex', 'horizon'],
+  ['Personal', 'MacBook Pro', 'Claude', 'sleep-tracker'],
+  ['Acme · client', 'devbox', 'Gemini', 'acme-ingest'],
+  ['Open source', 'vps-eu-1', 'Claude', 'capu-cli'],
+].entries()) {
+  component.renderVals().wsList[index].pick();
+  const view = component.renderVals();
+  assert.equal(view.wsList[index].t, name);
+  assert.equal(view.ws.machine, machine);
+  assert.equal(view.ws.agent, agent);
+  assert.equal(view.ws.projects[0].t, project);
+  assert.equal(view.wsList.filter(workspace => workspace.selected).length, 1);
+  assert.ok(view.wsList[index].selected);
+  assert.equal(view.wsList[index].miniLabel, name);
+  assert.equal(view.teamCur.status, 'Waiting for Builder');
+}
+component.renderVals().wsList[0].pick();
+assert.equal(component.renderVals().ws.machine, 'Mac Studio');
 """, text=True, capture_output=True)
     if result.returncode:
         errors.append(result.stderr)
 
 if errors:
     raise SystemExit("\n".join(errors))
-print(f"PASS: {len(resources)} resource mappings, {len(demo_resources)} demo bundles, navigation, metadata, JavaScript syntax, and team selection")
+print(f"PASS: {len(resources)} resource mappings, {len(demo_resources)} demo bundles, navigation, metadata, JavaScript syntax, team and workspace selection")

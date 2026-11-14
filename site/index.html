@@ -385,6 +385,7 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
         <a href="#features" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Features</a>
         <a href="#agents" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Agents</a>
         <a href="#team" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Teams</a>
+        <a href="#workspaces" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Workspaces</a>
         <a href="#machines" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Machines</a>
         <a href="#mobile" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Mobile</a>
         <a href="#keys" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Keyboard</a>
@@ -524,9 +525,12 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
     <sc-for list="{{ features }}" as="f" hint-placeholder-count="5">
       <section id="{{ f.id }}" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 100px 24px 20px;">
         <div style="{{ f.row }}">
-          <div style="flex: 1 1 340px; min-width: 0; max-width: 460px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px 56px; align-items: end;">
+            <div style="display: flex; flex-direction: column; gap: 16px;">
             <span style="{{ f.noteCss }}">{{ f.note }}</span>
             <h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.05; font-weight: 750; letter-spacing: -0.035em; text-wrap: balance;">{{ f.t }}</h2>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
             <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: rgba(243,245,251,0.74); text-wrap: pretty;">{{ f.d }}</p>
             <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 4px;">
               <sc-for list="{{ f.points }}" as="pt" hint-placeholder-count="3">
@@ -534,7 +538,8 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
               </sc-for>
             </div>
           </div>
-          <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 10px;">
+          </div>
+          <div style="width: 100%; min-width: 0; display: flex; flex-direction: column; gap: 10px;">
             <sc-if value="{{ f.isDevice }}" hint-placeholder-val="{{ false }}">
               <div ref="{{ f.ref }}" style="position: relative; width: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 0;">
                 <sc-for list="{{ devices }}" as="d" hint-placeholder-count="2">
@@ -564,6 +569,62 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
       </section>
     </sc-for>
   </div>
+
+  <section id="workspaces" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 130px 24px 20px; display: flex; flex-direction: column; gap: 36px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px 56px; align-items: end;">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <span style="font-family: 'Gochi Hand', cursive; font-size: 24px; color: #4ADE80; transform: rotate(-2deg); transform-origin: left; width: max-content; max-width: 100%;">a color for every context</span>
+        <h2 style="margin: 0; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.04; font-weight: 750; letter-spacing: -0.035em; text-wrap: balance;">Workspaces that look as different as they feel.</h2>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: rgba(243,245,251,0.74); text-wrap: pretty;">Group projects, machines and agents into workspaces, such as work, a client or a side project, and give each one its own tint. One glance at the window tells you where you are, so you never push to the wrong repo.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 10px;">
+          <sc-for list="{{ wsPoints }}" as="pt" hint-placeholder-count="3">
+            <div style="display: grid; grid-template-columns: 18px minmax(0,1fr); gap: 10px; font-size: 15px; line-height: 1.5;"><span style="font-size: 13px; font-weight: 800; line-height: 1.7; color: #4ADE80;">✓</span><span style="color: rgba(243,245,251,0.88); text-wrap: pretty;">{{ pt }}</span></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <sc-for list="{{ wsList }}" as="w" hint-placeholder-count="4">
+        <button type="button" class="workspace-button" sc-camel-on-click="{{ w.pick }}" aria-pressed="{{ w.selected }}" style="{{ w.chip }}"><span style="{{ w.dot }}"></span><span>{{ w.t }}</span></button>
+      </sc-for>
+      <span style="align-self: center; font-size: 13px; color: rgba(243,245,251,0.5); padding-left: 6px;">Click a workspace</span>
+    </div>
+    <div style="{{ ws.win }}">
+      <div style="{{ ws.bar }}">
+        <span style="width: 11px; height: 11px; border-radius: 999px; background: #FF5F57;"></span><span style="width: 11px; height: 11px; border-radius: 999px; background: #FEBC2E;"></span><span style="width: 11px; height: 11px; border-radius: 999px; background: #28C840;"></span>
+        <span style="flex: 1; min-width: 0; text-align: center; font-size: 13px; color: rgba(243,245,251,0.75); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ ws.title }}</span>
+      </div>
+      <div class="workspace-layout" style="display: grid; grid-template-columns: minmax(180px, 250px) minmax(0, 1fr); min-height: 420px;">
+        <div style="{{ ws.side }}">
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; background: rgba(243,245,251,0.05); box-shadow: inset 0 0 0 1px rgba(243,245,251,0.08);">
+            <div style="display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1;"><span style="font-size: 14px; font-weight: 600;">{{ ws.machine }}</span><span style="font-size: 11.5px; color: rgba(243,245,251,0.5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ ws.machineSub }}</span></div>
+            <span style="width: 7px; height: 7px; border-radius: 999px; background: #4ADE80;"></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px; padding: 0 4px;">
+            <sc-for list="{{ ws.projects }}" as="p" hint-placeholder-count="2">
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <span style="font-size: 13.5px; font-weight: 600; color: rgba(243,245,251,0.85);">{{ p.t }}</span>
+                <sc-for list="{{ p.sessions }}" as="s" hint-placeholder-count="2">
+                  <div style="{{ s.css }}"><span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; min-width: 0;">{{ s.t }}</span><span style="font-size: 11px; color: rgba(243,245,251,0.45);">{{ s.age }}</span></div>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top: auto; display: flex; align-items: center; gap: 8px; padding-top: 12px; border-top: 1px solid rgba(243,245,251,0.07);">
+            <sc-for list="{{ wsList }}" as="w" hint-placeholder-count="4"><button type="button" class="workspace-button" sc-camel-on-click="{{ w.pick }}" aria-label="{{ w.t }}" aria-pressed="{{ w.selected }}" style="{{ w.mini }}">{{ w.miniLabel }}</button></sc-for>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px; padding: 22px 26px; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 8px;"><span style="{{ ws.tab }}">{{ ws.agent }}</span><span style="font-size: 12.5px; color: rgba(243,245,251,0.5);">Working · {{ ws.branch }}</span></div>
+          <span style="font-size: 15px; line-height: 1.6; color: rgba(243,245,251,0.9); max-width: 640px; text-wrap: pretty;">{{ ws.msg }}</span>
+          <div style="display: flex; flex-direction: column; gap: 6px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12.5px; color: rgba(243,245,251,0.6);"><sc-for list="{{ ws.steps }}" as="s" hint-placeholder-count="2"><span>{{ s }}</span></sc-for></div>
+          <div style="{{ ws.composer }}">Reply to {{ ws.agent }}…</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="machines" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 130px 24px 20px; display: flex; flex-direction: column; gap: 40px;">
     <div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px;">
@@ -632,7 +693,6 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
   <section id="download" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 140px 24px 120px;">
     <div style="position: relative; border-radius: 28px; overflow: hidden; padding: clamp(40px, 6vw, 72px); background: radial-gradient(115% 95% at 28% 12%, #FFFFFF 0%, #F1EEFB 45%, #DCD5F2 100%); color: #17151F; display: flex; align-items: center; gap: 40px; flex-wrap: wrap;">
       <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
-        <span style="font-family: 'Gochi Hand', cursive; font-size: 26px; color: #7C3AED; transform: rotate(-2deg); transform-origin: left; width: max-content; max-width: 100%;">free while in beta</span>
         <h2 style="margin: 0; font-size: clamp(36px, 5vw, 64px); line-height: 1; font-weight: 800; letter-spacing: -0.045em; text-wrap: balance;">Give your agents a home.</h2>
         <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4A4458; max-width: 520px; text-wrap: pretty;">Install Capu on your Mac, point it at the agents you already use, and pair your iPhone with a code. Your sessions and code stay on your machines.</p>
         <div style="display: flex; gap: 10px; flex-wrap: wrap; padding-top: 6px;">
@@ -711,7 +771,7 @@ class Component extends DCLogic {
       features: FEATURES.map((f, i) => {
         const on = !!st.playing[f.id];
         return Object.assign({}, f, {
-          row: "display:flex;align-items:center;gap:56px;flex-wrap:wrap;" + (i % 2 ? "flex-direction:row-reverse;" : ""),
+          row: "display:flex;flex-direction:column;gap:36px;",
           noteCss: "font-family:'Gochi Hand',cursive;font-size:24px;line-height:1;color:" + f.c + ";transform:rotate(-2deg);transform-origin:left;width:max-content;max-width:100%;",
           tick: "font-size:13px;font-weight:800;line-height:1.7;color:" + f.c + ";",
           ref: this.refFor(f.id), isDevice: f.id === "mobile", isWin: f.id !== "mobile",
@@ -744,6 +804,29 @@ class Component extends DCLogic {
           ].map(r => Object.assign({}, r, { segs: r.segs.map(([a, b, t, c]) => ({ t, css: "position:absolute;top:0;bottom:0;left:" + a + "%;width:calc(" + (b - a) + "% - 3px);box-sizing:border-box;padding:0 9px;border-radius:7px;display:flex;align-items:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:11.5px;font-weight:600;" + (c ? "background:color-mix(in oklch, " + c + " 22%, transparent);color:" + c + ";box-shadow:inset 0 0 0 1px color-mix(in oklch, " + c + " 40%, transparent);" : "background:repeating-linear-gradient(135deg, rgba(243,245,251,0.04) 0 6px, transparent 6px 12px);color:rgba(243,245,251,0.4);box-shadow:inset 0 0 0 1px rgba(243,245,251,0.07);") })) }))
         };
       })(),
+      ...(() => {
+        const W = [
+          { t: "Marketing", c: "#4ADE80", machine: "Mac Studio", machineSub: "Remote · direct", agent: "Codex", branch: "agent/public-release", projects: [["horizon", [["Public release 0.8.45", "7d"], ["Changelog copy", "2d"]]], ["landing-site", [["Pricing page layout", "1h"]]]], msg: "Published 0.8.45 from main. Mac build signed and notarized; the iPhone build is with TestFlight.", steps: ["✓ Bash release-github.mjs", "✓ Edit releases.md +12"] },
+          { t: "Personal", c: "#A78BFA", machine: "MacBook Pro", machineSub: "This Mac", agent: "Claude", branch: "agent/sleep-tracker", projects: [["sleep-tracker", [["HealthKit import", "3h"]]], ["dotfiles", [["Ghostty theme", "5d"]]]], msg: "HealthKit import works for the last 30 days. Want me to add a background refresh, or keep it manual for now?", steps: ["✓ Edit HealthImport.swift +88", "● Bash xcodebuild test"] },
+          { t: "Acme · client", c: "#60A5FA", machine: "devbox", machineSub: "Linux · cloud VM", agent: "Gemini", branch: "agent/kafka-retries", projects: [["acme-ingest", [["Kafka retries", "20m"], ["Terraform drift", "1d"]]], ["acme-web", [["SSO callback bug", "4h"]]]], msg: "Retries now back off exponentially and dead-letter after five attempts. Load test is running on the devbox.", steps: ["✓ Edit consumer.go +46 −12", "● Bash make loadtest"] },
+          { t: "Open source", c: "#FBBF24", machine: "vps-eu-1", machineSub: "Linux · Hetzner", agent: "Claude", branch: "agent/deps-nov", projects: [["capu-cli", [["Nightly dependency bumps", "6h"]]], ["tree-sitter-hcl", [["Heredoc parsing", "2d"]]]], msg: "Bumped 14 dependencies. All tests pass except one flaky snapshot, which I've marked and opened an issue for.", steps: ["✓ Bash pnpm up --latest", "✓ Bash pnpm test · 312/313"] }
+        ];
+        const i = this.state.ws ?? 0, w = W[i], c = w.c, mix = (p, base) => "color-mix(in oklch, " + c + " " + p + "%, " + (base || "#121314") + ")";
+        return {
+          wsPoints: ["Projects, machines and agents grouped together", "A tint per workspace: title bar, sidebar, accents", "Switch with ⌃1–9 from the bottom of the sidebar"],
+          wsList: W.map((x, j) => ({ t: x.t, selected: j === i, pick: () => this.setState({ ws: j }), miniLabel: j === i ? x.t : "",
+            dot: "display:block;width:9px;height:9px;border-radius:999px;background:" + x.c + ";",
+            chip: "height:38px;padding:0 16px;border-radius:999px;display:flex;align-items:center;gap:9px;cursor:pointer;font-size:14px;font-weight:600;" + (j === i ? "background:color-mix(in oklch, " + x.c + " 18%, #121314);box-shadow:inset 0 0 0 1.5px " + x.c + ";color:#F3F5FB;" : "background:rgba(243,245,251,0.04);box-shadow:inset 0 0 0 1px rgba(243,245,251,0.1);color:rgba(243,245,251,0.75);"),
+            mini: "cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#0B0B0D;border-radius:999px;transition:all .25s;" + (j === i ? "height:24px;padding:0 12px;background:" + x.c + ";" : "width:12px;height:12px;background:" + x.c + ";opacity:.75;") })),
+          ws: { title: w.machine + " · " + w.t + " › " + w.projects[0][0] + " / " + w.branch, machine: w.machine, machineSub: w.machineSub, agent: w.agent, branch: w.branch, msg: w.msg, steps: w.steps,
+            projects: w.projects.map(([t, ss], pi) => ({ t, sessions: ss.map(([n, age], si) => ({ t: n, age, css: "display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;font-size:13px;" + (pi === 0 && si === 0 ? "background:" + mix(26) + ";box-shadow:inset 0 0 0 1px " + mix(45) + ";" : "color:rgba(243,245,251,0.7);") })) })),
+            win: "border-radius:16px;overflow:hidden;transition:background .35s;background:" + mix(9) + ";box-shadow:0 0 0 1px " + mix(30, "rgba(243,245,251,0.1)") + ",0 40px 100px rgba(0,0,0,0.5);",
+            bar: "height:42px;display:flex;align-items:center;gap:8px;padding:0 14px;transition:background .35s;background:" + mix(30) + ";border-bottom:1px solid " + mix(35, "rgba(243,245,251,0.06)") + ";",
+            side: "display:flex;flex-direction:column;gap:18px;padding:14px;transition:background .35s;background:" + mix(14) + ";border-right:1px solid rgba(243,245,251,0.06);",
+            tab: "height:28px;padding:0 12px;border-radius:8px;display:flex;align-items:center;font-size:13px;font-weight:600;background:" + mix(22) + ";box-shadow:inset 0 0 0 1px " + mix(45) + ";",
+            composer: "margin-top:auto;padding:16px 18px;border-radius:12px;font-size:14px;color:rgba(243,245,251,0.45);background:rgba(243,245,251,0.03);box-shadow:inset 0 0 0 1.5px " + mix(55) + ";" }
+        };
+      })(),
       agentPoints: [
         "Uses each agent's own CLI, login and config: nothing to migrate",
         "Mix agents in one session, like Claude to plan and Codex to build",
@@ -768,7 +851,7 @@ class Component extends DCLogic {
         { t: "Code stays on its machine", d: "Agents run next to the repo. Capu only syncs session state, so your code never leaves the box it lives on." }
       ],
       devices: (() => { const D = [["iPhone", "phone", 413, 872], ["iPhone Duo, unfolded", "duoO", 1030, 880]], P = 28, G = 28;
-        const tw = D.reduce((a, d) => a + d[2], 0) + G, w = this.state.w.mobile || 600, s = Math.min(0.62, w / tw);
+        const tw = D.reduce((a, d) => a + d[2], 0) + G, w = this.state.w.mobile || 600, s = Math.min(0.9, w / tw);
         return D.map(([t, k, dw, dh], i) => ({ t, src: RES(k === "phone" ? "appPhone" : "appDuo", "Capu iPhone and Duo.dc.html?device=" + k),
           box: "position:relative;flex:none;width:" + Math.round(dw * s) + "px;height:" + Math.round(dh * s) + "px;" + (i ? "margin-left:" + Math.round(G * s) + "px;" : "") + "border-radius:" + Math.round(64 * s) + "px;box-shadow:0 40px 90px rgba(0,0,0,0.55);",
           frame: "position:absolute;left:" + Math.round(-P * s) + "px;top:" + Math.round(-P * s) + "px;width:" + (dw + P * 2) + "px;height:" + (dh + P * 2) + "px;border:0;background:transparent;color-scheme:dark;transform:scale(" + s + ");transform-origin:0 0;" })); })(),

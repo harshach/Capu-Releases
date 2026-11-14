@@ -1,10 +1,15 @@
-.team-button {
+.team-button,
+.workspace-button {
   border: 0;
   background: transparent;
   font: inherit;
   color: inherit;
   text-align: left;
   box-sizing: content-box;
+}
+
+.workspace-button {
+  padding: 0;
 }
 
 .download-button {
@@ -125,5 +130,19 @@
 @media (prefers-reduced-motion: reduce) {
   html, body {
     scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .workspace-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .workspace-layout > div:last-child {
+    overflow-wrap: anywhere;
+  }
+
+  .workspace-layout > div:last-child > div:first-child {
+    flex-wrap: wrap;
   }
 }
