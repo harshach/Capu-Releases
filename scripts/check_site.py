@@ -70,11 +70,14 @@ for identifier in re.findall(r'RES\("([^\"]+)"', html):
 assert page.title and page.h1_count == 1, "The page needs a title and one main heading"
 assert '<html lang="en">' in html, "The page needs a language"
 assert len(feature_ids) == 7, "All seven feature demos must be present"
+assert {"team", "always"} <= page.ids, "The team and background-session sections must be present"
 assert (ROOT / "CNAME").read_text().strip() == "capu.ai"
 
-for name, path in resources.items():
-    if not name.startswith("app"):
-        continue
+demo_resources = {name: path for name, path in resources.items() if name.startswith("app")}
+assert set(demo_resources) == {
+    "appCanvas", "appLive", "appEdge", "appReviews", "appPhone", "appDuo", "appMemories", "appAnalytics"
+}, "All eight live demo bundles must be present"
+for name, path in demo_resources.items():
     bundle = (ROOT / path).read_text()
     match = re.search(r'<script type="__bundler/manifest">(.*?)</script>', bundle, re.S)
     assert match, f"{name} is missing its bundled resources"
@@ -89,7 +92,30 @@ for script in re.findall(r'<script[^>]*data-dc-script[^>]*>(.*?)</script>', html
     result = subprocess.run(["node", "--check"], input=script, text=True, capture_output=True)
     if result.returncode:
         errors.append(result.stderr)
+    result = subprocess.run(["node"], input="""
+const assert = require('node:assert/strict');
+const window = { __resources: """ + json.dumps(resources) + """ };
+class DCLogic {
+  setState(update) {
+    Object.assign(this.state, typeof update === 'function' ? update(this.state) : update);
+  }
+}
+""" + script + """
+const component = new Component();
+assert.equal(component.renderVals().teamCur.status, 'Working · step 3 of 5');
+for (const [index, status] of ['Done · 4 min', 'Working · step 3 of 5', 'Waiting for Builder'].entries()) {
+  component.renderVals().team[index].pick();
+  const view = component.renderVals();
+  assert.equal(view.teamCur.status, status);
+  assert.equal(view.team.filter(agent => agent.selected).length, 1);
+  assert.ok(view.team[index].selected);
+}
+assert.deepEqual(component.renderVals().devices.map(device => device.src),
+  [window.__resources.appPhone, window.__resources.appDuo]);
+""", text=True, capture_output=True)
+    if result.returncode:
+        errors.append(result.stderr)
 
 if errors:
     raise SystemExit("\n".join(errors))
-print(f"PASS: {len(resources)} resource mappings, 7 demo bundles, navigation, metadata, and JavaScript syntax")
+print(f"PASS: {len(resources)} resource mappings, {len(demo_resources)} demo bundles, navigation, metadata, JavaScript syntax, and team selection")

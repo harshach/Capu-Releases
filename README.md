@@ -1,6 +1,6 @@
 # Capu website
 
-The capu.ai marketing site follows the supplied **Capu Website 3** design. The static page in `site/` preserves its typography, colors, illustrations, copy, and seven interactive demos. The exported runtime and assets are local, so there is no install or build step.
+The capu.ai marketing site follows the supplied **Capu Website 4** design. The static page in `site/` includes the interactive agent team, background-session timeline, and seven feature sections with eight live demos, including separate iPhone and Duo views. The exported runtime and assets are local, so there is no install or build step.
 
 ## Preview
 
@@ -20,9 +20,9 @@ Use Python 3.9+ and Node.js:
 python3 scripts/check_site.py
 ```
 
-The check validates local asset paths, navigation targets, embedded demo resources, image and iframe labels, and page JavaScript syntax. Before changing the design, compare desktop and phone captures and exercise the seven **Play it live** buttons.
+The check validates local asset paths, navigation targets, embedded demo resources, image and iframe labels, page JavaScript syntax, and team selection. Before changing the design, compare desktop and phone captures, switch the three team roles, and exercise the live demos.
 
-Edit page content and demo data in `site/index.html`. `site/site.css` contains the phone navigation fix, focus styles, and download availability panel. `site/assets/resources.js` maps resource names to the exported assets. Keep the exported demos and runtime intact when changing the marketing page.
+Edit page content and demo data in `site/index.html`. `site/site.css` contains the phone navigation fix, accessible button and focus styles, and download availability panel. `site/assets/resources.js` maps resource names to the exported assets. Keep the exported demos and runtime intact when changing the marketing page.
 
 ## Publish with GitHub Pages
 
