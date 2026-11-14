@@ -22,7 +22,7 @@ python3 scripts/check_site.py
 
 The check validates local asset paths, navigation targets, embedded demo resources, image and iframe labels, page JavaScript syntax, and team and workspace selection. Before changing the design, compare desktop and phone captures, switch the three team roles and four workspaces, and exercise the live demos.
 
-Edit page content and demo data in `site/index.html`. `site/site.css` contains responsive navigation and workspace styles, accessible button and focus styles, and the download availability panel. `site/assets/resources.js` maps resource names to the exported assets. Keep the exported demos and runtime intact when changing the marketing page.
+Edit page content and demo data in `site/index.html`. `site/site.css` contains responsive navigation and workspace styles, and accessible button and focus styles. `site/assets/resources.js` maps resource names to the exported assets. Keep the exported demos and runtime intact when changing the marketing page.
 
 ## Publish with GitHub Pages
 
@@ -39,8 +39,8 @@ Set the custom domain to `capu.ai` in [repository Pages settings](https://github
 
 If you use `www`, point its CNAME record to `harshach.github.io`. After GitHub issues the certificate, enable **Enforce HTTPS**. See GitHub's [custom-domain instructions](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). Actions deployments require the domain in Pages settings; the included `site/CNAME` alone does not configure it.
 
-## Connect downloads
+## Downloads
 
-The supplied design contains placeholder download links, and this repository had no releases when the site was prepared. The three download cards currently open an availability panel with a link to this repository's releases.
+The hero's **Download for Mac** link and all three download cards open the [latest GitHub release](https://github.com/harshach/Capu-Releases/releases/latest). GitHub keeps this destination current as new versions are published.
 
-When the installers and App Store page are published, replace those cards in `site/index.html` with their real destination links and remove the availability panel. The platform labels, requirements, and product copy are preserved from the supplied design.
+The release includes Mac downloads for Apple silicon on macOS 27+, and Linux tarballs and Arch packages. The iPhone card points to the release notes for TestFlight information. No public TestFlight invitation or App Store link is configured.

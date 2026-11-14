@@ -400,7 +400,7 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
     <h1 style="margin: 0; font-size: clamp(44px, 7vw, 88px); line-height: 0.98; font-weight: 800; letter-spacing: -0.045em; max-width: 980px; text-wrap: balance;">All your coding agents, in one calm place.</h1>
     <p style="margin: 0; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.55; color: rgba(243,245,251,0.74); max-width: 680px; text-wrap: pretty;">Capu is a desktop and iPhone home for any CLI coding agent: Claude Code, Codex, Gemini, Cursor, Amp, OpenCode or your own. Run them side by side, on every machine, and answer them the moment they need you, without hunting through terminal tabs.</p>
     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      <a href="#download" style="height: 48px; padding: 0 22px; border-radius: 999px; display: flex; align-items: center; gap: 10px; background: #F3F5FB; color: #0B0B0D; font-size: 15.5px; font-weight: 600;" style-hover="background: #FFFFFF; color: #0B0B0D;"><svg width="15" height="18" sc-camel-view-box="0 0 17 20" fill="currentColor"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2.1-.9-3.4-.9C3.5 4.8 1.9 5.8 1 7.3c-1.9 3.2-.5 8 1.3 10.6.9 1.3 1.9 2.7 3.3 2.6 1.3-.1 1.8-.9 3.4-.9 1.6 0 2 .9 3.4.8 1.4 0 2.3-1.3 3.2-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.9-1.1-2.9-4.2zM11.6 3c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"></path></svg>Download for Mac</a>
+      <a href="https://github.com/harshach/Capu-Releases/releases/latest" style="height: 48px; padding: 0 22px; border-radius: 999px; display: flex; align-items: center; gap: 10px; background: #F3F5FB; color: #0B0B0D; font-size: 15.5px; font-weight: 600;" style-hover="background: #FFFFFF; color: #0B0B0D;"><svg width="15" height="18" sc-camel-view-box="0 0 17 20" fill="currentColor"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2.1-.9-3.4-.9C3.5 4.8 1.9 5.8 1 7.3c-1.9 3.2-.5 8 1.3 10.6.9 1.3 1.9 2.7 3.3 2.6 1.3-.1 1.8-.9 3.4-.9 1.6 0 2 .9 3.4.8 1.4 0 2.3-1.3 3.2-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.9-1.1-2.9-4.2zM11.6 3c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"></path></svg>Download for Mac</a>
       <a href="#download" style="height: 48px; padding: 0 22px; border-radius: 999px; display: flex; align-items: center; background: rgba(243,245,251,0.08); color: #F3F5FB; font-size: 15.5px; font-weight: 600; box-shadow: inset 0 0 0 1px rgba(243,245,251,0.12);" style-hover="background: rgba(243,245,251,0.13); color: #F3F5FB;">Linux and iPhone</a>
     </div>
   </section>
@@ -696,7 +696,7 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
         <h2 style="margin: 0; font-size: clamp(36px, 5vw, 64px); line-height: 1; font-weight: 800; letter-spacing: -0.045em; text-wrap: balance;">Give your agents a home.</h2>
         <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4A4458; max-width: 520px; text-wrap: pretty;">Install Capu on your Mac, point it at the agents you already use, and pair your iPhone with a code. Your sessions and code stay on your machines.</p>
         <div style="display: flex; gap: 10px; flex-wrap: wrap; padding-top: 6px;">
-          <sc-for list="{{ downloads }}" as="d" hint-placeholder-count="3"><button type="button" class="download-button" popovertarget="download-availability" style="{{ d.css }}"><span>{{ d.t }}</span><span style="{{ d.subCss }}">{{ d.sub }}</span></button></sc-for>
+          <sc-for list="{{ downloads }}" as="d" hint-placeholder-count="3"><a href="https://github.com/harshach/Capu-Releases/releases/latest" style="{{ d.css }}"><span>{{ d.t }}</span><span style="{{ d.subCss }}">{{ d.sub }}</span></a></sc-for>
         </div>
       </div>
       <div style="flex: none; margin: 0 auto;">
@@ -871,7 +871,7 @@ class Component extends DCLogic {
         ["Layouts that follow you", "Save a layout once and every session opens with it. Hidden blocks come back next time.", "#FCD34D"],
         ["Updates without the fuss", "A glowing button when a new version is ready, a quick restart, and a friendly note on what changed.", "#5EEAD4"]
       ].map(([t, d, c]) => ({ t, d, bar: "display:block;width:28px;height:4px;border-radius:999px;margin-bottom:8px;background:" + c + ";" })),
-      downloads: [["Download for Mac", "Apple silicon · macOS 14+", true], ["Linux", ".deb · .rpm · AppImage", false], ["iPhone", "App Store", false]].map(([t, sub, pri]) => ({ t, sub,
+      downloads: [["Download for Mac", "Apple silicon · macOS 27+", true], ["Linux", "tar.gz · Arch packages", false], ["iPhone", "TestFlight · release notes", false]].map(([t, sub, pri]) => ({ t, sub,
         css: "min-height:54px;padding:8px 20px;box-sizing:border-box;border-radius:16px;display:flex;flex-direction:column;justify-content:center;gap:1px;font-size:15px;font-weight:650;" + (pri ? "background:#17151F;color:#FFFFFF;" : "background:rgba(23,21,31,0.07);color:#17151F;box-shadow:inset 0 0 0 1px rgba(23,21,31,0.12);"),
         subCss: "font-size:12px;font-weight:500;opacity:" + (pri ? 0.65 : 0.6) + ";" }))
     };
@@ -879,13 +879,5 @@ class Component extends DCLogic {
 }
 </script>
 
-<div id="download-availability" popover role="dialog" aria-labelledby="download-title" aria-describedby="download-message">
-  <h2 id="download-title">Capu downloads</h2>
-  <p id="download-message">Public download links are not available yet. Check the release page for published builds.</p>
-  <div class="availability-actions">
-    <a href="https://github.com/harshach/Capu-Releases/releases">View releases</a>
-    <button type="button" popovertarget="download-availability" popovertargetaction="hide" autofocus>Close</button>
-  </div>
-</div>
 <noscript><p class="no-script">Enable JavaScript to explore the interactive Capu demos. <a href="https://github.com/harshach/Capu-Releases/releases">View releases</a>.</p></noscript>
 </body></html>
