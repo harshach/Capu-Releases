@@ -1,1 +1,46 @@
-# Capu
+# Capu website
+
+The capu.ai marketing site follows the supplied **Capu Website 3** design. The static page in `site/` preserves its typography, colors, illustrations, copy, and seven interactive demos. The exported runtime and assets are local, so there is no install or build step.
+
+## Preview
+
+Run from the repository root:
+
+```sh
+python3 -m http.server 8000 --bind 127.0.0.1 --directory site
+```
+
+Open http://127.0.0.1:8000.
+
+## Check changes
+
+Use Python 3.9+ and Node.js:
+
+```sh
+python3 scripts/check_site.py
+```
+
+The check validates local asset paths, navigation targets, embedded demo resources, image and iframe labels, and page JavaScript syntax. Before changing the design, compare desktop and phone captures and exercise the seven **Play it live** buttons.
+
+Edit page content and demo data in `site/index.html`. `site/site.css` contains the phone navigation fix, focus styles, and download availability panel. `site/assets/resources.js` maps resource names to the exported assets. Keep the exported demos and runtime intact when changing the marketing page.
+
+## Publish with GitHub Pages
+
+The **Website** workflow checks pull requests and deploys `site/` when changes reach `main`. GitHub Pages must use **GitHub Actions** as its publishing source. The workflow uses GitHub's [custom workflow setup](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+
+Set the custom domain to `capu.ai` in [repository Pages settings](https://github.com/harshach/Capu-Releases/settings/pages). At the DNS provider, point the apex domain's A records to:
+
+```text
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+
+If you use `www`, point its CNAME record to `harshach.github.io`. After GitHub issues the certificate, enable **Enforce HTTPS**. See GitHub's [custom-domain instructions](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). Actions deployments require the domain in Pages settings; the included `site/CNAME` alone does not configure it.
+
+## Connect downloads
+
+The supplied design contains placeholder download links, and this repository had no releases when the site was prepared. The three download cards currently open an availability panel with a link to this repository's releases.
+
+When the installers and App Store page are published, replace those cards in `site/index.html` with their real destination links and remove the availability panel. The platform labels, requirements, beta offer, and product copy are preserved from the supplied design.

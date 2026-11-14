@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<title>Capu — All your coding agents, in one calm place.</title>
+<meta name="description" content="A home for your CLI coding agents. Run Claude Code, Codex, Gemini, Cursor, Amp, and OpenCode side by side, across your machines.">
+<meta name="theme-color" content="#0E0F10">
+<link rel="canonical" href="https://capu.ai/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://capu.ai/">
+<meta property="og:title" content="Capu — All your coding agents, in one calm place.">
+<meta property="og:description" content="Run your coding agents side by side, on every machine.">
+<meta property="og:image" content="https://capu.ai/assets/shot-canvas.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<script src="assets/resources.js"></script>
+<link rel="stylesheet" href="site.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/dc-runtime.js"></script>
+
+</head>
+<body>
+<a class="skip-link" href="#top">Skip to content</a>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/615a9ecb-4dbc-4feb-a01b-55e07c7ad00d.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/f9f55828-40d3-46e3-9396-85e66c26e123.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/f6235ae5-dfab-4c89-b39f-5cd096887600.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/11f63d18-7c94-461e-b6ee-03e17a487bf6.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/36f14f57-22b7-4e19-9669-579306ad5624.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/615a9ecb-4dbc-4feb-a01b-55e07c7ad00d.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/f9f55828-40d3-46e3-9396-85e66c26e123.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/f6235ae5-dfab-4c89-b39f-5cd096887600.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/11f63d18-7c94-461e-b6ee-03e17a487bf6.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/36f14f57-22b7-4e19-9669-579306ad5624.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/615a9ecb-4dbc-4feb-a01b-55e07c7ad00d.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/f9f55828-40d3-46e3-9396-85e66c26e123.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/f6235ae5-dfab-4c89-b39f-5cd096887600.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/11f63d18-7c94-461e-b6ee-03e17a487bf6.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/36f14f57-22b7-4e19-9669-579306ad5624.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/615a9ecb-4dbc-4feb-a01b-55e07c7ad00d.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/f9f55828-40d3-46e3-9396-85e66c26e123.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/f6235ae5-dfab-4c89-b39f-5cd096887600.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/11f63d18-7c94-461e-b6ee-03e17a487bf6.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/36f14f57-22b7-4e19-9669-579306ad5624.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("assets/615a9ecb-4dbc-4feb-a01b-55e07c7ad00d.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("assets/f9f55828-40d3-46e3-9396-85e66c26e123.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("assets/f6235ae5-dfab-4c89-b39f-5cd096887600.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("assets/11f63d18-7c94-461e-b6ee-03e17a487bf6.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("assets/36f14f57-22b7-4e19-9669-579306ad5624.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/0ca61121-71f2-4255-91e9-a332349aab8d.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/a4a0b018-c7f9-4774-916b-b9c5b5b2ff8b.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/0ad8e18f-f1e5-421f-9061-5afed44deffe.woff2") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/77080147-1e89-4bf7-ad44-8334134a3c27.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/e88f60ea-2657-4eeb-a4b2-e25df5f19cf8.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fce3c880-b2f8-425c-87b6-b41075d8e1e2.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/0ca61121-71f2-4255-91e9-a332349aab8d.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/a4a0b018-c7f9-4774-916b-b9c5b5b2ff8b.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/0ad8e18f-f1e5-421f-9061-5afed44deffe.woff2") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/77080147-1e89-4bf7-ad44-8334134a3c27.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/e88f60ea-2657-4eeb-a4b2-e25df5f19cf8.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fce3c880-b2f8-425c-87b6-b41075d8e1e2.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Gochi Hand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/df122d5d-e728-4695-b2a9-747066badcc9.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+html, body { margin: 0; background: #0E0F10; color: #F3F5FB; font-family: 'Geist', -apple-system, system-ui, sans-serif; -webkit-font-smoothing: antialiased; color-scheme: dark; scroll-behavior: smooth; }
+a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
+@keyframes wsPulse { 0%,100% { opacity: .55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
+</style>
+</helmet>
+<div style="display: flex; flex-direction: column; min-height: 100vh;">
+
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(14,15,16,0.78); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4); border-bottom: 1px solid rgba(243,245,251,0.06);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; gap: 28px;">
+      <a href="#top" style="display: flex; align-items: center; gap: 9px; color: #F3F5FB;">
+        <x-import component-from-global-scope="capu-mascot" from="assets/capu-mascot.js#/capu-mascot.js" mood="idle" part="icon" size="26" hint-size="26px,28px"></x-import>
+        <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em;">Capu</span>
+      </a>
+      <nav aria-label="Main navigation" style="display: flex; align-items: center; gap: 22px; flex: 1; flex-wrap: wrap; font-size: 14px;">
+        <a href="#features" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Features</a>
+        <a href="#agents" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Agents</a>
+        <a href="#machines" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Machines</a>
+        <a href="#mobile" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Mobile</a>
+        <a href="#keys" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Keyboard</a>
+        <a href="#more" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Everything else</a>
+      </nav>
+      <a href="#download" style="height: 36px; padding: 0 16px; border-radius: 999px; display: flex; align-items: center; gap: 8px; background: #F3F5FB; color: #0B0B0D; font-size: 14px; font-weight: 600; white-space: nowrap;" style-hover="background: #FFFFFF; color: #0B0B0D;">Download</a>
+    </div>
+  </header>
+
+  <section id="top" tabindex="-1" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 88px 24px 40px; display: flex; flex-direction: column; gap: 28px;">
+    <span style="font-family: 'Gochi Hand', cursive; font-size: 26px; color: #C4B5FD; transform: rotate(-2deg); transform-origin: left; width: max-content; max-width: 100%;">for developers who run more than one agent</span>
+    <h1 style="margin: 0; font-size: clamp(44px, 7vw, 88px); line-height: 0.98; font-weight: 800; letter-spacing: -0.045em; max-width: 980px; text-wrap: balance;">All your coding agents, in one calm place.</h1>
+    <p style="margin: 0; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.55; color: rgba(243,245,251,0.74); max-width: 680px; text-wrap: pretty;">Capu is a desktop and iPhone home for any CLI coding agent: Claude Code, Codex, Gemini, Cursor, Amp, OpenCode or your own. Run them side by side, on every machine, and answer them the moment they need you, without hunting through terminal tabs.</p>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <a href="#download" style="height: 48px; padding: 0 22px; border-radius: 999px; display: flex; align-items: center; gap: 10px; background: #F3F5FB; color: #0B0B0D; font-size: 15.5px; font-weight: 600;" style-hover="background: #FFFFFF; color: #0B0B0D;"><svg width="15" height="18" sc-camel-view-box="0 0 17 20" fill="currentColor"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2.1-.9-3.4-.9C3.5 4.8 1.9 5.8 1 7.3c-1.9 3.2-.5 8 1.3 10.6.9 1.3 1.9 2.7 3.3 2.6 1.3-.1 1.8-.9 3.4-.9 1.6 0 2 .9 3.4.8 1.4 0 2.3-1.3 3.2-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.9-1.1-2.9-4.2zM11.6 3c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"></path></svg>Download for Mac</a>
+      <a href="#download" style="height: 48px; padding: 0 22px; border-radius: 999px; display: flex; align-items: center; background: rgba(243,245,251,0.08); color: #F3F5FB; font-size: 15.5px; font-weight: 600; box-shadow: inset 0 0 0 1px rgba(243,245,251,0.12);" style-hover="background: rgba(243,245,251,0.13); color: #F3F5FB;">Linux and iPhone</a>
+    </div>
+  </section>
+
+  <section style="max-width: 1280px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 24px 24px 0;">
+    <div style="position: relative;">
+      <div style="position: absolute; right: 44px; top: -66px; z-index: 3; pointer-events: none; display: flex; align-items: flex-end; gap: 6px;">
+        <span style="font-family: 'Gochi Hand', cursive; font-size: 22px; color: #86EFAC; transform: rotate(-6deg); padding-bottom: 30px; white-space: nowrap;">try it, it's live →</span>
+        <x-import component-from-global-scope="capu-mascot" from="assets/capu-mascot.js#/capu-mascot.js" mood="wave" size="86" hint-size="86px,86px"></x-import>
+      </div>
+      <div style="position: relative; border-radius: 16px; overflow: hidden; background: #121314; box-shadow: 0 0 0 1px rgba(243,245,251,0.1), 0 40px 120px rgba(124,58,237,0.16), 0 30px 80px rgba(0,0,0,0.6);">
+        <div ref="{{ heroRef }}" style="{{ heroStage }}">
+          <iframe sc-camel-src="{{ heroSrc }}" title="Capu desktop, live" loading="lazy" style="{{ heroFrame }}"></iframe>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; padding: 44px 0 0;">
+      <a href="#agents" style="font-size: 13px; color: rgba(243,245,251,0.5);" style-hover="color: #F3F5FB;">Works with any CLI agent, including</a>
+      <sc-for list="{{ agents }}" as="a" hint-placeholder-count="6">
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: rgba(243,245,251,0.82);"><img sc-camel-src="{{ a.icon }}" alt="" width="20" height="20" style="display: block;"><span>{{ a.t }}</span></div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 130px 24px 40px; display: flex; flex-direction: column; gap: 44px;">
+    <div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px;">
+      <span style="font-family: 'Gochi Hand', cursive; font-size: 24px; color: #FDBA9A; transform: rotate(-2deg); transform-origin: left; width: max-content; max-width: 100%;">sound familiar?</span>
+      <h2 style="margin: 0; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.04; font-weight: 750; letter-spacing: -0.035em; text-wrap: balance;">Agents are fast. Keeping up with them is the slow part.</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px;">
+      <sc-for list="{{ pains }}" as="p" hint-placeholder-count="3">
+        <div style="display: flex; flex-direction: column; gap: 12px; padding: 26px 24px; border-radius: 18px; background: rgba(243,245,251,0.03); box-shadow: inset 0 0 0 1px rgba(243,245,251,0.07);">
+          <span style="font-size: 15px; line-height: 1.5; color: rgba(243,245,251,0.5); text-decoration: line-through; text-decoration-color: rgba(248,113,113,0.6); text-wrap: pretty;">{{ p.before }}</span>
+          <span style="font-size: 19px; line-height: 1.4; font-weight: 600; letter-spacing: -0.01em; text-wrap: pretty;">{{ p.after }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="agents" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 130px 24px 20px; display: flex; align-items: center; gap: 56px; flex-wrap: wrap;">
+    <div style="flex: 1 1 340px; min-width: 0; max-width: 480px; display: flex; flex-direction: column; gap: 16px;">
+      <span style="font-family: 'Gochi Hand', cursive; font-size: 24px; color: #FCD34D; transform: rotate(-2deg); transform-origin: left; width: max-content; max-width: 100%;">bring your own agent</span>
+      <h2 style="margin: 0; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.04; font-weight: 750; letter-spacing: -0.035em; text-wrap: balance;">Any CLI agent. No lock-in.</h2>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: rgba(243,245,251,0.74); text-wrap: pretty;">Capu doesn't replace your agents. It runs the real CLI you already trust, with your own logins, config and keys. If it runs in a terminal, it runs in Capu, and you can switch or mix agents whenever a better one ships.</p>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 4px;">
+        <sc-for list="{{ agentPoints }}" as="pt" hint-placeholder-count="3">
+          <div style="display: grid; grid-template-columns: 18px minmax(0,1fr); gap: 10px; font-size: 15px; line-height: 1.5;"><span style="font-size: 13px; font-weight: 800; line-height: 1.7; color: #FCD34D;">✓</span><span style="color: rgba(243,245,251,0.88); text-wrap: pretty;">{{ pt }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px;">
+        <sc-for list="{{ agentTiles }}" as="a" hint-placeholder-count="8">
+          <div style="{{ a.css }}">
+            <sc-if value="{{ a.hasIcon }}" hint-placeholder-val="{{ true }}"><img sc-camel-src="{{ a.icon }}" alt="" width="28" height="28" style="display: block;"></sc-if>
+            <sc-if value="{{ a.isAdd }}" hint-placeholder-val="{{ false }}"><span style="width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #FCD34D; box-shadow: inset 0 0 0 1.5px rgba(252,211,77,0.5);">+</span></sc-if>
+            <div style="display: flex; flex-direction: column; gap: 1px; min-width: 0;"><span style="font-size: 14.5px; font-weight: 650;">{{ a.t }}</span><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11.5px; color: rgba(243,245,251,0.5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ a.cmd }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="border-radius: 14px; overflow: hidden; background: #0B0C0D; box-shadow: 0 0 0 1px rgba(243,245,251,0.09);">
+        <div style="height: 32px; display: flex; align-items: center; gap: 8px; padding: 0 14px; border-bottom: 1px solid rgba(243,245,251,0.06); font-size: 12px; color: rgba(243,245,251,0.5);">Settings › Agents › Add custom agent</div>
+        <div style="padding: 14px 16px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 13px; line-height: 1.75; color: rgba(243,245,251,0.85); white-space: pre-wrap; overflow-wrap: anywhere;"><sc-for list="{{ agentCfg }}" as="l" hint-placeholder-count="4"><div style="display: grid; grid-template-columns: 96px minmax(0,1fr); gap: 10px;"><span style="color: rgba(243,245,251,0.45);">{{ l.k }}</span><span style="{{ l.css }}">{{ l.v }}</span></div></sc-for></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="features" style="display: flex; flex-direction: column;">
+    <sc-for list="{{ features }}" as="f" hint-placeholder-count="5">
+      <section id="{{ f.id }}" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 100px 24px 20px;">
+        <div style="{{ f.row }}">
+          <div style="flex: 1 1 340px; min-width: 0; max-width: 460px; display: flex; flex-direction: column; gap: 16px;">
+            <span style="{{ f.noteCss }}">{{ f.note }}</span>
+            <h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.05; font-weight: 750; letter-spacing: -0.035em; text-wrap: balance;">{{ f.t }}</h2>
+            <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: rgba(243,245,251,0.74); text-wrap: pretty;">{{ f.d }}</p>
+            <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 4px;">
+              <sc-for list="{{ f.points }}" as="pt" hint-placeholder-count="3">
+                <div style="display: grid; grid-template-columns: 18px minmax(0,1fr); gap: 10px; font-size: 15px; line-height: 1.5;"><span style="{{ f.tick }}">✓</span><span style="color: rgba(243,245,251,0.88); text-wrap: pretty;">{{ pt }}</span></div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 10px;">
+            <div style="border-radius: 14px; overflow: hidden; background: #121314; box-shadow: 0 0 0 1px rgba(243,245,251,0.1), 0 30px 80px rgba(0,0,0,0.5);">
+              <div style="height: 34px; display: flex; align-items: center; gap: 7px; padding: 0 12px; background: #1A1B1E; border-bottom: 1px solid rgba(243,245,251,0.06);">
+                <span style="width: 10px; height: 10px; border-radius: 999px; background: #FF5F57;"></span><span style="width: 10px; height: 10px; border-radius: 999px; background: #FEBC2E;"></span><span style="width: 10px; height: 10px; border-radius: 999px; background: #28C840;"></span>
+                <span style="flex: 1; text-align: center; font-size: 12px; color: rgba(243,245,251,0.5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ f.win }}</span>
+                <span style="{{ f.liveCss }}">{{ f.liveLbl }}</span>
+              </div>
+              <div ref="{{ f.ref }}" style="{{ f.stage }}">
+                <sc-if value="{{ f.playing }}" hint-placeholder-val="{{ false }}">
+                  <iframe sc-camel-src="{{ f.src }}" title="{{ f.t }}" style="{{ f.frame }}"></iframe>
+                </sc-if>
+                <sc-if value="{{ f.poster }}" hint-placeholder-val="{{ true }}">
+                  <button type="button" class="demo-play" aria-label="{{ f.t }}" sc-camel-on-click="{{ f.play }}" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; background: linear-gradient(180deg, rgba(14,15,16,0) 40%, rgba(14,15,16,0.55) 100%);" style-hover="background: linear-gradient(180deg, rgba(14,15,16,0.1) 0%, rgba(14,15,16,0.65) 100%);">
+                    <div style="display: flex; align-items: center; gap: 12px; height: 52px; padding: 0 22px 0 8px; border-radius: 999px; background: rgba(14,15,16,0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 0 0 1px rgba(243,245,251,0.16), 0 12px 30px rgba(0,0,0,0.5);">
+                      <span style="width: 38px; height: 38px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: #F3F5FB; color: #0B0B0D;"><svg width="13" height="14" sc-camel-view-box="0 0 13 14" fill="currentColor"><path d="M2 1.2v11.6c0 .6.7 1 1.2.6l9-5.8c.5-.3.5-1 0-1.3l-9-5.8C2.7.2 2 .6 2 1.2z"></path></svg></span>
+                      <div style="display: flex; flex-direction: column; gap: 1px;"><span style="font-size: 14.5px; font-weight: 600;">Play it live</span><span style="font-size: 12px; color: rgba(243,245,251,0.6);">{{ f.hint }}</span></div>
+                    </div>
+                  </button>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-for>
+  </div>
+
+  <section id="machines" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 130px 24px 20px; display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px;">
+      <span style="font-family: 'Gochi Hand', cursive; font-size: 24px; color: #60A5FA; transform: rotate(-2deg); transform-origin: left; width: max-content; max-width: 100%;">one Capu, every machine</span>
+      <h2 style="margin: 0; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.04; font-weight: 750; letter-spacing: -0.035em; text-wrap: balance;">Run agents anywhere. Steer them from wherever you are.</h2>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: rgba(243,245,251,0.74); text-wrap: pretty;">Add Capu to your laptop, a desktop at home, a cloud devbox or a VPS. Each machine runs its own agents next to its own code; Capu brings every session together in one list, so you can start, answer and review from any of them, or from your phone.</p>
+    </div>
+    <div style="position: relative; border-radius: 22px; padding: clamp(24px, 4vw, 44px); background: rgba(243,245,251,0.025); box-shadow: inset 0 0 0 1px rgba(243,245,251,0.07); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px;">
+      <sc-for list="{{ machines }}" as="m" hint-placeholder-count="4">
+        <div style="display: flex; flex-direction: column; gap: 14px; padding: 18px; border-radius: 16px; background: #141518; box-shadow: 0 0 0 1px rgba(243,245,251,0.09), 0 18px 40px rgba(0,0,0,0.35);">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(96,165,250,0.12); color: #93C5FD; font-size: 16px;">{{ m.glyph }}</span>
+            <div style="display: flex; flex-direction: column; gap: 1px; min-width: 0;"><span style="font-size: 15px; font-weight: 650;">{{ m.t }}</span><span style="font-size: 12px; color: rgba(243,245,251,0.5);">{{ m.sub }}</span></div>
+            <span style="margin-left: auto; width: 8px; height: 8px; border-radius: 999px; background: #4ADE80; box-shadow: 0 0 0 3px rgba(74,222,128,0.16);"></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <sc-for list="{{ m.sessions }}" as="s" hint-placeholder-count="2">
+              <div style="display: grid; grid-template-columns: 8px minmax(0,1fr) auto; gap: 8px; align-items: center; font-size: 13px;"><span style="{{ s.dot }}"></span><span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: rgba(243,245,251,0.86);">{{ s.t }}</span><span style="{{ s.stCss }}">{{ s.st }}</span></div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 28px;">
+      <sc-for list="{{ machinePoints }}" as="p" hint-placeholder-count="4">
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <span style="font-size: 16px; font-weight: 650;">{{ p.t }}</span>
+          <span style="font-size: 14.5px; line-height: 1.55; color: rgba(243,245,251,0.68); text-wrap: pretty;">{{ p.d }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="keys" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 130px 24px 20px; display: flex; flex-direction: column; gap: 36px;">
+    <div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px;">
+      <span style="font-family: 'Gochi Hand', cursive; font-size: 24px; color: #93C5FD; transform: rotate(-2deg); transform-origin: left; width: max-content; max-width: 100%;">hands stay on the keys</span>
+      <h2 style="margin: 0; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.04; font-weight: 750; letter-spacing: -0.035em; text-wrap: balance;">Built for the keyboard, from the first shortcut.</h2>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: rgba(243,245,251,0.74); text-wrap: pretty;">Every block, answer and agent has a key. Here are the ones you'll use daily.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1px; border-radius: 18px; overflow: hidden; background: rgba(243,245,251,0.07); box-shadow: 0 0 0 1px rgba(243,245,251,0.07);">
+      <sc-for list="{{ keys }}" as="k" hint-placeholder-count="6">
+        <div style="display: flex; flex-direction: column; gap: 14px; padding: 22px; background: #121314;">
+          <div style="display: flex; gap: 5px; flex-wrap: wrap;"><sc-for list="{{ k.keys }}" as="kk" hint-placeholder-count="2"><span style="min-width: 34px; height: 34px; padding: 0 9px; box-sizing: border-box; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 15px; font-weight: 500; background: #1E1F23; box-shadow: inset 0 -2px 0 rgba(0,0,0,0.5), inset 0 0 0 1px rgba(243,245,251,0.12);">{{ kk }}</span></sc-for></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 15.5px; font-weight: 600;">{{ k.t }}</span><span style="font-size: 13.5px; line-height: 1.5; color: rgba(243,245,251,0.6); text-wrap: pretty;">{{ k.d }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="more" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 130px 24px 20px; display: flex; flex-direction: column; gap: 36px;">
+    <div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px;">
+      <span style="font-family: 'Gochi Hand', cursive; font-size: 24px; color: #86EFAC; transform: rotate(-2deg); transform-origin: left; width: max-content; max-width: 100%;">and the small things</span>
+      <h2 style="margin: 0; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.04; font-weight: 750; letter-spacing: -0.035em; text-wrap: balance;">Everything else that makes a long day shorter.</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 16px;">
+      <sc-for list="{{ more }}" as="m" hint-placeholder-count="6">
+        <div style="display: flex; flex-direction: column; gap: 8px; padding: 24px; border-radius: 18px; background: rgba(243,245,251,0.03); box-shadow: inset 0 0 0 1px rgba(243,245,251,0.07);">
+          <span style="{{ m.bar }}"></span>
+          <span style="font-size: 18px; font-weight: 650; letter-spacing: -0.01em;">{{ m.t }}</span>
+          <span style="font-size: 14.5px; line-height: 1.55; color: rgba(243,245,251,0.68); text-wrap: pretty;">{{ m.d }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="download" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 140px 24px 120px;">
+    <div style="position: relative; border-radius: 28px; overflow: hidden; padding: clamp(40px, 6vw, 72px); background: radial-gradient(115% 95% at 28% 12%, #FFFFFF 0%, #F1EEFB 45%, #DCD5F2 100%); color: #17151F; display: flex; align-items: center; gap: 40px; flex-wrap: wrap;">
+      <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
+        <span style="font-family: 'Gochi Hand', cursive; font-size: 26px; color: #7C3AED; transform: rotate(-2deg); transform-origin: left; width: max-content; max-width: 100%;">free while in beta</span>
+        <h2 style="margin: 0; font-size: clamp(36px, 5vw, 64px); line-height: 1; font-weight: 800; letter-spacing: -0.045em; text-wrap: balance;">Give your agents a home.</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #4A4458; max-width: 520px; text-wrap: pretty;">Install Capu on your Mac, point it at the agents you already use, and pair your iPhone with a code. Your sessions and code stay on your machines.</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; padding-top: 6px;">
+          <sc-for list="{{ downloads }}" as="d" hint-placeholder-count="3"><button type="button" class="download-button" popovertarget="download-availability" style="{{ d.css }}"><span>{{ d.t }}</span><span style="{{ d.subCss }}">{{ d.sub }}</span></button></sc-for>
+        </div>
+      </div>
+      <div style="flex: none; margin: 0 auto;">
+        <x-import component-from-global-scope="capu-mascot" from="assets/capu-mascot.js#/capu-mascot.js" mood="celebrate" size="200" hint-size="200px,200px"></x-import>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top: 1px solid rgba(243,245,251,0.06);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px 48px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 13.5px; color: rgba(243,245,251,0.5);">
+      <div style="display: flex; align-items: center; gap: 8px; color: #F3F5FB;"><x-import component-from-global-scope="capu-mascot" from="assets/capu-mascot.js#/capu-mascot.js" mood="sleep" part="icon" size="20" hint-size="20px,22px"></x-import><span style="font-weight: 700;">Capu</span></div>
+      <span style="flex: 1;">Made for developers who run more than one agent.</span>
+      <a href="#features" style="color: rgba(243,245,251,0.6);" style-hover="color: #F3F5FB;">Features</a>
+      <a href="#download" style="color: rgba(243,245,251,0.6);" style-hover="color: #F3F5FB;">Download</a>
+
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+const BASE = 1280;
+const RES = (id, p) => (window.__resources || {})[id] || p;
+const FEATURES = [
+  { id: "canvas", note: "one canvas, your way", c: "#C4B5FD", t: "Every agent and every view, side by side.", win: "Capu · capu-design / dark-mode-tokens",
+    d: "The conversation, plan, todos, changes, checks and review are blocks. Drag them into splits, stack them as tabs or save a layout, then switch sessions without losing it.",
+    points: ["Run Claude Code and Codex in the same session, on the same worktree", "Drag any block to split right, split down or stack as a tab", "⌘1–9 jumps to a block; nothing needs the mouse"],
+    poster: RES("shotCanvas", "screenshots/site-canvas.jpg"), src: RES("appCanvas", "Capu.dc.html"), hint: "The full desktop app · click around", h: 800 },
+  { id: "live", note: "answer without switching apps", c: "#FCD34D", t: "Your agents wait in the notch, not in a tab.", win: "Capu Live Activity · MacBook Pro",
+    d: "When an agent needs a yes, a choice or a reply, it shows up at the top of your screen. Press 1, 2 or 3 and keep working; the answer goes straight to the agent.",
+    points: ["Works with the notch and the new Dynamic Island", "J/K to move between requests, Esc to undo for 2 seconds", "Every machine in one inbox: your Mac, a devbox, a VPS"],
+    poster: RES("shotLive", "screenshots/site-live.jpg"), src: RES("appLive", "Capu Live Activity.dc.html"), hint: "Hover the notch, answer a request", h: 800 },
+  { id: "edge", note: "or keep it on the edge", c: "#86EFAC", t: "A quiet rail that only speaks up when it matters.", win: "Capu Edge",
+    d: "Prefer the side of the screen? The Edge rail shows what's waiting, then what's working, and folds idle sessions into one number. Hide it completely and it comes back only when an agent asks something.",
+    points: ["Ask out loud: “Anything waiting on me?”, “Is anything broken?”", "⌃⌥H hides Capu until an agent needs you", "Answer the oldest request from anywhere with ⌃⌥Space"],
+    poster: RES("shotEdge", "screenshots/site-edge.jpg"), src: RES("appEdge", "Capu Edge v2.dc.html"), hint: "Try Hidden and Ask Capu", h: 900 },
+  { id: "reviews", note: "reviews, with a reviewer", c: "#93C5FD", t: "Review pull requests with an agent at your side.", win: "Capu · Reviews",
+    d: "Your review queue is sorted by what you can act on. Start a review and Capu walks you through the files in order, explains changes when you ask and drafts comments you can edit before submitting.",
+    points: ["Waiting on you, in progress and your own PRs, synced from GitHub", "A step-by-step view with inline comments", "Ask the reviewer follow-up questions before you approve"],
+    poster: RES("shotReviews", "screenshots/site-reviews.jpg"), src: RES("appReviews", "Capu Reviews List.dc.html"), hint: "Open the review queue", h: 800 },
+  { id: "mobile", note: "away from the desk", c: "#FDBA9A", t: "Your sessions, in your pocket.", win: "Capu for iPhone and iPhone Duo",
+    d: "Pair your iPhone and every session comes with you. The conversation fills the screen, and changes, checks and todos sit as pills above the composer. Unfold an iPhone Duo and they become columns.",
+    points: ["Approve and reply from the Lock Screen", "Thumb-reach controls on the folded Duo", "Switch between chat and the agent's real terminal"],
+    poster: RES("shotMobile", "screenshots/site-mobile.jpg"), src: RES("appMobile", "Capu iPhone and Duo.dc.html"), hint: "iPhone, Duo folded and open", h: 860 },
+  { id: "memories", note: "it learns how you work", c: "#F0ABFC", t: "Tell it once. Every agent remembers.", win: "Capu · Memories",
+    d: "Capu notices your preferences, like commit style, test commands and things to never touch, and saves them as memories. Review what it learned each week, keep what's right and share it with every project.",
+    points: ["Per-project or Everywhere, shared by every agent", "A weekly review of new memories", "Fix or forget anything with one click"],
+    poster: RES("shotMemories", "screenshots/site-memories.jpg"), src: RES("appMemories", "Capu Memories.dc.html"), hint: "Browse what Capu learned", h: 800 },
+  { id: "analytics", note: "know what it costs", c: "#5EEAD4", t: "See where the tokens go, and how to save them.", win: "Capu · Analytics",
+    d: "Tokens, spend and agent time across every agent, project and machine. Capu points out the waste, such as a bloated AGENTS.md or an expensive model on simple tasks, and can fix it for you.",
+    points: ["Breakdowns by activity, agent and day", "Concrete ways to save, with the tokens each one avoids", "Apply a fix yourself or hand it to an agent"],
+    poster: RES("shotAnalytics", "screenshots/site-analytics.jpg"), src: RES("appAnalytics", "Capu Analytics.dc.html"), hint: "Explore the analytics", h: 860 }
+];
+class Component extends DCLogic {
+  state = { w: {}, playing: {} };
+  _refs = {}; _ros = [];
+  componentWillUnmount() { this._ros.forEach(r => r.disconnect()); }
+  refFor(id) {
+    if (!this._refs[id]) this._refs[id] = el => { if (!el || el._ro) return; const ro = new ResizeObserver(() => { const w = el.clientWidth; if (w && this.state.w[id] !== w) this.setState(s => ({ w: Object.assign({}, s.w, { [id]: w }) })); }); ro.observe(el); el._ro = ro; this._ros.push(ro); };
+    return this._refs[id];
+  }
+  frame(id, h) { const w = this.state.w[id] || BASE; return "position:absolute;left:0;top:0;width:" + BASE + "px;height:" + h + "px;border:0;transform:scale(" + (w / BASE) + ");transform-origin:0 0;background:#121314;"; }
+  renderVals() {
+    const st = this.state;
+    return {
+      heroRef: this.refFor("hero"), heroSrc: RES("appCanvas", "Capu.dc.html"), heroStage: "position:relative;width:100%;aspect-ratio:1280 / 800;overflow:hidden;background:#121314 url('" + RES("shotCanvas", "screenshots/site-canvas.jpg") + "') top center / cover no-repeat;", heroFrame: this.frame("hero", 800),
+      agents: [["Claude Code", RES("icClaude", "icons/claude-code.svg")], ["Codex", RES("icCodex", "icons/codex.svg")], ["Cursor", RES("icCursor", "icons/cursor-agent.svg")], ["Gemini", RES("icGemini", "icons/gemini.svg")], ["Amp", RES("icAmp", "icons/amp.svg")], ["OpenCode", RES("icOpencode", "icons/opencode.svg")]].map(([t, icon]) => ({ t, icon })),
+      pains: [
+        { before: "Six terminal tabs, and one of them has been waiting on you for 40 minutes.", after: "Every agent that needs you, in one place, answered in one keystroke." },
+        { before: "Switching windows to approve an npm install, then losing your train of thought.", after: "Answer from the notch or the edge of the screen, then keep working." },
+        { before: "A surprise bill at the end of the month, and no idea which agent caused it.", after: "Spend by agent, project and day, with fixes for the waste." }
+      ],
+      features: FEATURES.map((f, i) => {
+        const on = !!st.playing[f.id];
+        return Object.assign({}, f, {
+          row: "display:flex;align-items:center;gap:56px;flex-wrap:wrap;" + (i % 2 ? "flex-direction:row-reverse;" : ""),
+          noteCss: "font-family:'Gochi Hand',cursive;font-size:24px;line-height:1;color:" + f.c + ";transform:rotate(-2deg);transform-origin:left;width:max-content;max-width:100%;",
+          tick: "font-size:13px;font-weight:800;line-height:1.7;color:" + f.c + ";",
+          ref: this.refFor(f.id), playing: on, poster: !on,
+          stage: "position:relative;width:100%;aspect-ratio:" + BASE + " / " + f.h + ";overflow:hidden;background:#121314 url('" + f.poster + "') top center / cover no-repeat;",
+          frame: this.frame(f.id, f.h),
+          play: () => this.setState(s => ({ playing: Object.assign({}, s.playing, { [f.id]: true }) })),
+          liveLbl: on ? "● Live" : "Preview",
+          liveCss: "flex:none;font-size:11px;font-weight:600;letter-spacing:.02em;color:" + (on ? "#86EFAC" : "rgba(243,245,251,0.4)") + ";"
+        });
+      }),
+      agentPoints: [
+        "Uses each agent's own CLI, login and config: nothing to migrate",
+        "Mix agents in one session, like Claude to plan and Codex to build",
+        "Add any other CLI with a command and a few hints about how it asks questions"
+      ],
+      agentTiles: [["Claude Code", "claude", "icClaude", "icons/claude-code.svg"], ["Codex", "codex", "icCodex", "icons/codex.svg"], ["Gemini CLI", "gemini", "icGemini", "icons/gemini.svg"], ["Cursor", "cursor-agent", "icCursor", "icons/cursor-agent.svg"], ["Amp", "amp", "icAmp", "icons/amp.svg"], ["OpenCode", "opencode", "icOpencode", "icons/opencode.svg"], ["Any shell", "bash · zsh · fish", "icTerm", "icons/terminal.svg"], ["Your agent", "add a command", null, null]].map(([t, cmd, id, p]) => ({ t, cmd, icon: p ? RES(id, p) : "", hasIcon: !!p, isAdd: !p,
+        css: "display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;" + (p ? "background:rgba(243,245,251,0.035);box-shadow:inset 0 0 0 1px rgba(243,245,251,0.08);" : "background:rgba(252,211,77,0.05);box-shadow:inset 0 0 0 1px rgba(252,211,77,0.3);border:0;") })),
+      agentCfg: [["name", "Aider", "#F3F5FB"], ["command", "aider --model sonnet", "#86EFAC"], ["asks with", "\"(Y)es/(N)o\" · \"Allow\"", "#FCD34D"], ["done when", "prompt returns to \">\"", "#93C5FD"]].map(([k, v, c]) => ({ k, v, css: "color:" + c + ";" })),
+      machines: [
+        ["⌘", "MacBook Pro", "This Mac · you're here", [["Pricing page layout", "work"], ["Stripe checkout", "needs"]]],
+        ["▣", "Studio at home", "macOS · always on", [["Search ranking", "work"], ["Onboarding emails", "done"]]],
+        ["☁", "devbox", "Linux · cloud VM", [["Kafka retries", "needs"], ["Terraform drift check", "work"]]],
+        ["◇", "vps-eu-1", "Linux · Hetzner", [["Nightly dependency bumps", "work"]]]
+      ].map(([glyph, t, sub, ss]) => ({ glyph, t, sub, sessions: ss.map(([n, k]) => ({ t: n,
+        dot: "display:block;width:7px;height:7px;border-radius:999px;background:" + ({ needs: "#FCD34D", work: "#60A5FA", done: "#4ADE80" })[k] + ";",
+        st: ({ needs: "needs you", work: "working", done: "done" })[k],
+        stCss: "font-size:11.5px;color:" + ({ needs: "#FCD34D", work: "#93C5FD", done: "#86EFAC" })[k] + ";" })) })),
+      machinePoints: [
+        { t: "Add a machine in a minute", d: "Install Capu Host on any Mac or Linux box and pair it with a short code. No ports to open, no VPN." },
+        { t: "One list of sessions", d: "Every session from every machine, sorted by what needs you. A thin divider shows where each one runs." },
+        { t: "Start work where it belongs", d: "Pick the machine when you start a session: heavy builds on the devbox, quick fixes on your laptop." },
+        { t: "Code stays on its machine", d: "Agents run next to the repo. Capu only syncs session state, so your code never leaves the box it lives on." }
+      ],
+      keys: [
+        { keys: ["⌃", "⌥", "Space"], t: "Answer the oldest request", d: "From any app. The request opens where your eyes already are." },
+        { keys: ["1", "2", "3"], t: "Pick an answer", d: "Options are numbered the same in the notch, the edge and the app." },
+        { keys: ["⌥", "⌥"], t: "Ask Capu", d: "Double-tap Option and ask about your sessions, out loud or typed." },
+        { keys: ["⌘", "1–9"], t: "Jump to a block", d: "Conversation, plan, changes, checks: each has a number." },
+        { keys: ["J", "K"], t: "Move between requests", d: "Walk through everything that's waiting, one by one." },
+        { keys: ["⌃", "⌥", "H"], t: "Hide until needed", d: "Capu disappears and comes back only when an agent asks something." }
+      ],
+      more: [
+        ["Fix failing checks", "Click Fix on a red check. Capu fetches the logs, edits, runs the tests and pushes, and you watch each step turn green.", "#F87171"],
+        ["Every machine, one list", "Your Mac, a devbox and a VPS show up together. Sessions run where your code lives; Capu just connects them.", "#60A5FA"],
+        ["Guided review from a prompt", "Start a review like any session, with a template you can edit, and the reviewer joins as a block.", "#C4B5FD"],
+        ["Automations", "Run agents on a schedule or when something happens, like a new issue or a failing build, and get the result in your inbox.", "#86EFAC"],
+        ["Layouts that follow you", "Save a layout once and every session opens with it. Hidden blocks come back next time.", "#FCD34D"],
+        ["Updates without the fuss", "A glowing button when a new version is ready, a quick restart, and a friendly note on what changed.", "#5EEAD4"]
+      ].map(([t, d, c]) => ({ t, d, bar: "display:block;width:28px;height:4px;border-radius:999px;margin-bottom:8px;background:" + c + ";" })),
+      downloads: [["Download for Mac", "Apple silicon · macOS 14+", true], ["Linux", ".deb · .rpm · AppImage", false], ["iPhone", "App Store", false]].map(([t, sub, pri]) => ({ t, sub,
+        css: "min-height:54px;padding:8px 20px;box-sizing:border-box;border-radius:16px;display:flex;flex-direction:column;justify-content:center;gap:1px;font-size:15px;font-weight:650;" + (pri ? "background:#17151F;color:#FFFFFF;" : "background:rgba(23,21,31,0.07);color:#17151F;box-shadow:inset 0 0 0 1px rgba(23,21,31,0.12);"),
+        subCss: "font-size:12px;font-weight:500;opacity:" + (pri ? 0.65 : 0.6) + ";" }))
+    };
+  }
+}
+</script>
+
+<div id="download-availability" popover role="dialog" aria-labelledby="download-title" aria-describedby="download-message">
+  <h2 id="download-title">Capu downloads</h2>
+  <p id="download-message">Public download links are not available yet. Check the release page for published builds.</p>
+  <div class="availability-actions">
+    <a href="https://github.com/harshach/Capu-Releases/releases">View releases</a>
+    <button type="button" popovertarget="download-availability" popovertargetaction="hide" autofocus>Close</button>
+  </div>
+</div>
+<noscript><p class="no-script">Enable JavaScript to explore the interactive Capu demos. <a href="https://github.com/harshach/Capu-Releases/releases">View releases</a>.</p></noscript>
+</body></html>
