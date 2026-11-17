@@ -1,6 +1,6 @@
 # Capu website
 
-The capu.ai marketing site follows the supplied **Capu Website 6** design. The static page in `site/` includes full-width feature previews, larger iPhone and Duo demos, the interactive agent team, background-session timeline, and four selectable workspace themes. The seven feature sections use eight live demos. The exported runtime and assets are local, so there is no install or build step.
+The capu.ai marketing site follows the supplied **Capu Website v2 2** design. The static page in `site/` includes interactive feature previews, Classic and Liquid Glass appearance controls, and the Capu and Conductor comparison. The seven feature sections use eight live demo bundles, with the desktop preview also used in the hero and appearance section. The exported runtime and assets are local, so there is no install or build step.
 
 ## Preview
 
@@ -20,9 +20,9 @@ Use Python 3.9+ and Node.js:
 python3 scripts/check_site.py
 ```
 
-The check validates local asset paths, navigation targets, embedded demo resources, image and iframe labels, page JavaScript syntax, and team and workspace selection. Before changing the design, compare desktop and phone captures, switch the three team roles and four workspaces, and exercise the live demos.
+The check validates local assets, navigation, demo resources, accessibility labels, JavaScript syntax, and team, workspace, and appearance selection. It also checks appearance messages and rapid switches between styles. Before changing the design, compare desktop and phone captures, switch the team roles, workspaces, and appearance controls, and exercise the live demos.
 
-Edit page content and demo data in `site/index.html`. `site/site.css` contains responsive navigation and workspace styles, and accessible button and focus styles. `site/assets/resources.js` maps resource names to the exported assets. Keep the exported demos and runtime intact when changing the marketing page.
+Edit page content and demo data in `site/index.html`. `site/site.css` contains responsive navigation, workspace and comparison styles, and accessible button and focus styles. `site/assets/resources.js` maps resource names to the exported assets. Keep the exported demos and runtime intact when changing the marketing page.
 
 ## Publish with GitHub Pages
 

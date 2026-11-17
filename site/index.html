@@ -381,15 +381,13 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
         <x-import component-from-global-scope="capu-mascot" from="assets/capu-mascot.js#/capu-mascot.js" mood="idle" part="icon" size="26" hint-size="26px,28px"></x-import>
         <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em;">Capu</span>
       </a>
-      <nav aria-label="Main navigation" style="display: flex; align-items: center; gap: 22px; flex: 1; flex-wrap: wrap; font-size: 14px;">
+      <nav aria-label="Main navigation" style="display: flex; align-items: center; gap: 22px; flex: 1; min-width: 0; flex-wrap: nowrap; overflow: hidden; white-space: nowrap; font-size: 14px;">
         <a href="#features" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Features</a>
         <a href="#agents" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Agents</a>
-        <a href="#team" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Teams</a>
         <a href="#workspaces" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Workspaces</a>
         <a href="#machines" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Machines</a>
-        <a href="#mobile" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Mobile</a>
-        <a href="#keys" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Keyboard</a>
-        <a href="#more" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Everything else</a>
+        <a href="#looks" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Looks</a>
+        <a href="#compare" style="color: rgba(243,245,251,0.72);" style-hover="color: #F3F5FB;">Compare</a>
       </nav>
       <a href="#download" style="height: 36px; padding: 0 16px; border-radius: 999px; display: flex; align-items: center; gap: 8px; background: #F3F5FB; color: #0B0B0D; font-size: 14px; font-weight: 600; white-space: nowrap;" style-hover="background: #FFFFFF; color: #0B0B0D;">Download</a>
     </div>
@@ -406,14 +404,20 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
   </section>
 
   <section style="max-width: 1280px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 24px 24px 0;">
-    <div style="position: relative;">
+    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 0 0 18px;">
+      <div role="group" aria-label="Hero preview appearance" style="display: flex; gap: 2px; padding: 3px; border-radius: 999px; background: rgba(243,245,251,0.06); box-shadow: inset 0 0 0 1px rgba(243,245,251,0.1);">
+        <sc-for list="{{ heroLooks }}" as="l" hint-placeholder-count="2"><button type="button" class="look-button" sc-camel-on-click="{{ l.pick }}" aria-pressed="{{ l.selected }}" style="{{ l.css }}">{{ l.t }}</button></sc-for>
+      </div>
+      <span style="font-size: 13px; color: rgba(243,245,251,0.55);">Both ship on macOS. Liquid Glass needs macOS 26.</span>
+    </div>
+    <div class="hero-preview" style="position: relative;">
       <div style="position: absolute; right: 44px; top: -66px; z-index: 3; pointer-events: none; display: flex; align-items: flex-end; gap: 6px;">
         <span style="font-family: 'Gochi Hand', cursive; font-size: 22px; color: #86EFAC; transform: rotate(-6deg); padding-bottom: 30px; white-space: nowrap;">try it, it's live →</span>
         <x-import component-from-global-scope="capu-mascot" from="assets/capu-mascot.js#/capu-mascot.js" mood="wave" size="86" hint-size="86px,86px"></x-import>
       </div>
       <div style="position: relative; border-radius: 16px; overflow: hidden; background: #121314; box-shadow: 0 0 0 1px rgba(243,245,251,0.1), 0 40px 120px rgba(124,58,237,0.16), 0 30px 80px rgba(0,0,0,0.6);">
-        <div ref="{{ heroRef }}" style="{{ heroStage }}">
-          <iframe sc-camel-src="{{ heroSrc }}" scrolling="no" title="Capu desktop, live" loading="lazy" style="{{ heroFrame }}"></iframe>
+        <div ref="{{ heroRef }}" style="position: relative; width: 100%; aspect-ratio: 1280 / 800; overflow: hidden; background: #121314 url(&quot;assets/shot-canvas.jpg&quot;) top center / cover no-repeat;">
+          <iframe ref="{{ heroIfr }}" sc-camel-on-load="{{ heroLoad }}" sc-camel-src="{{ heroSrc }}" scrolling="no" title="Capu desktop, live" loading="lazy" allowtransparency="true" style="{{ heroFrame }}"></iframe>
         </div>
       </div>
     </div>
@@ -626,6 +630,37 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
     </div>
   </section>
 
+  <section id="looks" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 130px 24px 20px; display: flex; flex-direction: column; gap: 36px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px 56px; align-items: end;">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <span style="font-family: 'Gochi Hand', cursive; font-size: 24px; color: #A5B4FC; transform: rotate(-2deg); transform-origin: left; width: max-content; max-width: 100%;">your Mac, your look</span>
+        <h2 style="margin: 0; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.04; font-weight: 750; letter-spacing: -0.035em; text-wrap: balance;">Liquid Glass, or keep it classic.</h2>
+      </div>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: rgba(243,245,251,0.74); text-wrap: pretty;">On macOS 26, Capu can use Liquid Glass: the sidebar and window frame let your wallpaper through, tinted to the workspace you're in. Prefer solid surfaces? Classic is one click away and looks the same on macOS 14 and 15 and on Linux.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <div role="group" aria-label="Appearance preview styles" style="display: flex; gap: 2px; padding: 3px; border-radius: 999px; background: rgba(243,245,251,0.06); box-shadow: inset 0 0 0 1px rgba(243,245,251,0.1);">
+          <sc-for list="{{ lookOpts }}" as="l" hint-placeholder-count="4"><button type="button" class="look-button" sc-camel-on-click="{{ l.pick }}" aria-pressed="{{ l.selected }}" style="{{ l.css }}">{{ l.t }}</button></sc-for>
+        </div>
+        <span style="font-size: 14px; color: rgba(243,245,251,0.65); text-wrap: pretty;">{{ lookDesc }}</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; background: #121314; box-shadow: 0 0 0 1px rgba(243,245,251,0.1), 0 30px 80px rgba(0,0,0,0.5);">
+        <div ref="{{ looksRef }}" style="position: relative; width: 100%; aspect-ratio: 1280 / 800; overflow: hidden; background: #121314;">
+          <iframe ref="{{ looksIfr }}" sc-camel-on-load="{{ looksLoad }}" sc-camel-src="{{ heroSrc }}" scrolling="no" title="Capu appearance, live" loading="lazy" allowtransparency="true" style="{{ looksFrame }}"></iframe>
+        </div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 16px;">
+      <sc-for list="{{ lookCards }}" as="m" hint-placeholder-count="4">
+        <div style="display: flex; flex-direction: column; gap: 8px; padding: 22px; border-radius: 18px; background: rgba(243,245,251,0.03); box-shadow: inset 0 0 0 1px rgba(243,245,251,0.07);">
+          <span style="font-size: 16px; font-weight: 650;">{{ m.t }}</span>
+          <span style="font-size: 14px; line-height: 1.55; color: rgba(243,245,251,0.68); text-wrap: pretty;">{{ m.d }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
   <section id="machines" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 130px 24px 20px; display: flex; flex-direction: column; gap: 40px;">
     <div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px;">
       <span style="font-family: 'Gochi Hand', cursive; font-size: 24px; color: #60A5FA; transform: rotate(-2deg); transform-origin: left; width: max-content; max-width: 100%;">one Capu, every machine</span>
@@ -690,6 +725,43 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
     </div>
   </section>
 
+  <section id="compare" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 130px 24px 20px; display: flex; flex-direction: column; gap: 36px;">
+    <div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px;">
+      <span style="font-family: 'Gochi Hand', cursive; font-size: 24px; color: #FDBA9A; transform: rotate(-2deg); transform-origin: left; width: max-content; max-width: 100%;">the honest comparison</span>
+      <h2 style="margin: 0; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.04; font-weight: 750; letter-spacing: -0.035em; text-wrap: balance;">Capu or Conductor?</h2>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: rgba(243,245,251,0.74); text-wrap: pretty;">Both run several coding agents side by side in isolated worktrees, then help you review and merge. The difference is where your agents live, which ones you can bring, and what happens when you look away.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px;">
+      <sc-for list="{{ cmpHi }}" as="h" hint-placeholder-count="4">
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 24px; border-radius: 18px; background: rgba(243,245,251,0.03); box-shadow: inset 0 0 0 1px rgba(243,245,251,0.07);">
+          <span style="{{ h.bar }}"></span>
+          <span style="font-size: 18px; font-weight: 650; letter-spacing: -0.01em; text-wrap: balance;">{{ h.t }}</span>
+          <span style="font-size: 14.5px; line-height: 1.55; color: rgba(243,245,251,0.68); text-wrap: pretty;">{{ h.d }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div class="comparison-scroll" role="region" aria-label="Capu and Conductor comparison" tabindex="0" style="border-radius: 18px; box-shadow: 0 0 0 1px rgba(243,245,251,0.08);">
+      <div class="comparison-table" role="table" aria-label="Capu and Conductor features">
+        <div role="row" style="display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr) minmax(0, 1.2fr); background: rgba(243,245,251,0.04);">
+          <span role="columnheader" aria-label="Feature" style="padding: 16px 20px;"></span>
+          <div role="columnheader" style="padding: 16px 20px; display: flex; align-items: center; gap: 9px; background: rgba(196,181,253,0.08); box-shadow: inset 0 -2px 0 #C4B5FD;">
+            <x-import component-from-global-scope="capu-mascot" from="assets/capu-mascot.js#/capu-mascot.js" mood="idle" part="icon" size="20" hint-size="20px,22px"></x-import>
+            <span style="font-size: 15px; font-weight: 700;">Capu</span>
+          </div>
+          <span role="columnheader" style="padding: 16px 20px; font-size: 15px; font-weight: 700; color: rgba(243,245,251,0.75);">Conductor</span>
+        </div>
+        <sc-for list="{{ cmpRows }}" as="r" hint-placeholder-count="8">
+          <div role="row" style="display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr) minmax(0, 1.2fr); border-top: 1px solid rgba(243,245,251,0.06);">
+            <span role="rowheader" style="padding: 16px 20px; font-size: 14px; font-weight: 600; color: rgba(243,245,251,0.6);">{{ r.k }}</span>
+            <span role="cell" style="padding: 16px 20px; font-size: 14.5px; line-height: 1.5; color: #F3F5FB; background: rgba(196,181,253,0.05); text-wrap: pretty;">{{ r.a }}</span>
+            <span role="cell" style="padding: 16px 20px; font-size: 14.5px; line-height: 1.5; color: rgba(243,245,251,0.62); text-wrap: pretty;">{{ r.b }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <span style="font-size: 12.5px; line-height: 1.6; color: rgba(243,245,251,0.45); text-wrap: pretty;">Checked against <a href="https://www.conductor.build" target="_blank" rel="noopener">conductor.build</a>, its <a href="https://www.conductor.build/docs/installation" target="_blank" rel="noopener">install docs</a> and <a href="https://www.conductor.build/docs/cloud/faq" target="_blank" rel="noopener">Cloud FAQ</a> on November 17, 2026. Conductor has <a href="https://www.conductor.build/announcement" target="_blank" rel="noopener">announced it is joining Meta</a> and says development continues. Spotted something out of date? Tell us and we'll fix it.</span>
+  </section>
+
   <section id="download" style="max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 140px 24px 120px;">
     <div style="position: relative; border-radius: 28px; overflow: hidden; padding: clamp(40px, 6vw, 72px); background: radial-gradient(115% 95% at 28% 12%, #FFFFFF 0%, #F1EEFB 45%, #DCD5F2 100%); color: #17151F; display: flex; align-items: center; gap: 40px; flex-wrap: wrap;">
       <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
@@ -711,7 +783,7 @@ a { color: #C4B5FD; text-decoration: none; } a:hover { color: #DDD6FE; }
       <span style="flex: 1;">Made for developers who run more than one agent.</span>
       <a href="#features" style="color: rgba(243,245,251,0.6);" style-hover="color: #F3F5FB;">Features</a>
       <a href="#download" style="color: rgba(243,245,251,0.6);" style-hover="color: #F3F5FB;">Download</a>
-
+      <a href="https://github.com/harshach/Capu-Releases/releases/latest" style="color: rgba(243,245,251,0.6);" style-hover="color: #F3F5FB;">What's new</a>
     </div>
   </footer>
 </div>
@@ -723,7 +795,7 @@ const FEATURES = [
   { id: "canvas", note: "one canvas, your way", c: "#C4B5FD", t: "Every agent and every view, side by side.", win: "Capu · capu-design / dark-mode-tokens",
     d: "The conversation, plan, todos, changes, checks and review are blocks. Drag them into splits, stack them as tabs or save a layout, then switch sessions without losing it.",
     points: ["Run Claude Code and Codex in the same session, on the same worktree", "Drag any block to split right, split down or stack as a tab", "⌘1–9 jumps to a block; nothing needs the mouse"],
-    src: RES("appCanvas", "Capu.dc.html"), crop: [1280, 800, 0, 0, 1280, 800], chrome: true },
+    src: RES("appCanvas", "Capu.dc.html") + "#bare=1", crop: [1280, 800, 0, 0, 1280, 800], chrome: true },
   { id: "live", note: "answer without switching apps", c: "#FCD34D", t: "Your agents wait in the notch, not in a tab.", win: "Capu Live Activity · MacBook Pro",
     d: "When an agent needs a yes, a choice or a reply, it shows up at the top of your screen. Press 1, 2 or 3 and keep working; the answer goes straight to the agent.",
     points: ["Works with the notch and the new Dynamic Island", "J/K to move between requests, Esc to undo for 2 seconds", "Every machine in one inbox: your Mac, a devbox, a VPS"],
@@ -749,19 +821,67 @@ const FEATURES = [
     points: ["Breakdowns by activity, agent and day", "Concrete ways to save, with the tokens each one avoids", "Apply a fix yourself or hand it to an agent"],
     src: RES("appAnalytics", "Capu Analytics.dc.html?bare=1"), crop: [1504, 900, 12, 14, 1480, 862], chrome: false }
 ];
+const LOOKS = {
+  classic: { t: "Classic", g: { on: false }, d: "Solid surfaces everywhere. The default on macOS 14–15 and Linux." },
+  clear: { t: "Clear", g: { on: true, style: "clear", panes: "solid", opacity: 50 }, d: "The lightest glass. Sidebar and frame let the most wallpaper through." },
+  tinted: { t: "Tinted", g: { on: true, style: "tinted", panes: "solid", opacity: 50 }, d: "Glass tinted to your workspace colour. Content stays on solid panes." },
+  full: { t: "Full", g: { on: true, style: "full", panes: "glass", opacity: 50 }, d: "Glass on panes too. Opt-in, and drops to Tinted on Low Power." }
+};
 class Component extends DCLogic {
-  state = { w: {}, playing: {} };
+  state = { w: {}, playing: {}, heroLook: "tinted", look: "tinted" };
+  _ifr = {};
+  _lookTimers = {};
+  ifrRef(k) { if (!this["_ir" + k]) this["_ir" + k] = el => { this._ifr[k] = el; }; return this["_ir" + k]; }
+  sendLook(k, look) {
+    (this._lookTimers[k] || []).forEach(clearTimeout);
+    const f = this._ifr[k]; if (!f) return;
+    const g = LOOKS[look].g;
+    // The bundled preview installs its message listener after the iframe loads.
+    this._lookTimers[k] = [0, 300, 900, 2000].map(ms => setTimeout(() => {
+      if (this._ifr[k] !== f) return;
+      try { f.contentWindow && f.contentWindow.postMessage({ hzGlass: g }, window.location.origin); } catch (e) {}
+    }, ms));
+  }
   _refs = {}; _ros = [];
-  componentWillUnmount() { this._ros.forEach(r => r.disconnect()); }
+  componentWillUnmount() { this._ros.forEach(r => r.disconnect()); Object.values(this._lookTimers).flat().forEach(clearTimeout); }
   refFor(id) {
     if (!this._refs[id]) this._refs[id] = el => { if (!el || el._ro) return; const ro = new ResizeObserver(() => { const w = el.clientWidth; if (w && this.state.w[id] !== w) this.setState(s => ({ w: Object.assign({}, s.w, { [id]: w }) })); }); ro.observe(el); el._ro = ro; this._ros.push(ro); };
     return this._refs[id];
   }
+  segCss(on) { return "height:32px;padding:0 14px;border-radius:999px;display:flex;align-items:center;cursor:pointer;font-size:13.5px;font-weight:600;white-space:nowrap;transition:background .15s ease;" + (on ? "background:#F3F5FB;color:#0B0B0D;" : "color:rgba(243,245,251,0.7);"); }
   frame(id, h) { const w = this.state.w[id] || BASE; return "position:absolute;left:0;top:0;width:" + BASE + "px;height:" + h + "px;border:0;transform:scale(" + (w / BASE) + ");transform-origin:0 0;background:#121314;"; }
   renderVals() {
     const st = this.state;
     return {
-      heroRef: this.refFor("hero"), heroSrc: RES("appCanvas", "Capu.dc.html"), heroStage: "position:relative;width:100%;aspect-ratio:1280 / 800;overflow:hidden;background:#121314 url('" + RES("shotCanvas", "screenshots/site-canvas.jpg") + "') top center / cover no-repeat;", heroFrame: this.frame("hero", 800),
+      heroRef: this.refFor("hero"), heroSrc: RES("appCanvas", "Capu.dc.html") + "#bare=1", heroFrame: this.frame("hero", 800).replace("background:#121314;", "background:transparent;"),
+      heroIfr: this.ifrRef("hero"), heroLoad: () => this.sendLook("hero", st.heroLook),
+      heroLooks: [["classic", "Classic"], ["tinted", "Liquid Glass"]].map(([k, t]) => ({ t, selected: st.heroLook === k, pick: () => { this.setState({ heroLook: k }); this.sendLook("hero", k); }, css: this.segCss(st.heroLook === k) })),
+      looksRef: this.refFor("looks"), looksFrame: this.frame("looks", 800).replace("background:#121314;", "background:transparent;"),
+      looksIfr: this.ifrRef("looks"), looksLoad: () => this.sendLook("looks", st.look),
+      lookOpts: Object.keys(LOOKS).map(k => ({ t: LOOKS[k].t, selected: st.look === k, pick: () => { this.setState({ look: k }); this.sendLook("looks", k); }, css: this.segCss(st.look === k) })),
+      lookDesc: LOOKS[st.look].d,
+      lookCards: [
+        { t: "Glass where it helps", d: "Following Apple's guidance, glass sits behind navigation: the sidebar, the window frame, menus and dialogs. Your code and conversation stay on solid ground." },
+        { t: "Tinted to the workspace", d: "Each workspace's colour flows into the glass, so switching from Personal to a client project is something you can see." },
+        { t: "One slider for strength", d: "Settings › Liquid Glass has an opacity slider from Clear to Solid, saved per workspace." },
+        { t: "Readable first", d: "Dialogs use heavier blur so text behind never competes. Reduce Transparency and Low Power are respected automatically." }
+      ],
+      cmpHi: [
+        ["Mac and Linux, not just Mac", "Capu runs on macOS and Linux, with an iPhone app for both. Conductor is macOS only for now; Windows and Linux are on a waitlist.", "#86EFAC"],
+        ["Your machines, not someone's cloud", "Run agents on your laptop, a studio Mac, a devbox or a VPS, all in one list. Code never leaves the box it lives on.", "#60A5FA"],
+        ["Quit the app, agents keep going", "Close Capu or update it and every session carries on. Conductor's local sessions end when you close the app; only its cloud workspaces continue.", "#FCD34D"],
+        ["Any CLI agent, even your own", "Claude Code, Codex, Cursor and OpenCode, plus Gemini, Amp or any command you add. Conductor supports those first four.", "#C4B5FD"]
+      ].map(([t, d, c]) => ({ t, d, bar: "display:block;width:28px;height:4px;border-radius:999px;margin-bottom:4px;background:" + c + ";" })),
+      cmpRows: [
+        ["Platforms", "macOS, Linux and iPhone", "macOS and iOS. Windows and Linux not yet available"],
+        ["Agents", "Any CLI agent: Claude Code, Codex, Gemini, Cursor, Amp, OpenCode, or your own command", "Claude Code, Codex, Cursor and OpenCode"],
+        ["Where agents run", "Any Mac or Linux box you pair with a short code, shown together in one list", "Your Mac, or Conductor Cloud sandboxes (Vercel, us-east-1) on paid plans"],
+        ["When you close the app", "Agents keep running. Reopen and catch up", "Local sessions end. Cloud workspaces continue"],
+        ["Your code and chats", "Stay on your machines. Capu only syncs session state", "Local stays on your Mac. Cloud chats are stored on Conductor's servers"],
+        ["Answering agents", "Notch, Edge rail and iPhone Lock Screen, with one-key answers", "Desktop app, iOS app and API"],
+        ["Beyond the diff", "GitHub Issues, guided PR reviews, memories, automations and cost analytics", "Diff review, checks, pull requests and merge"],
+        ["Look", "Liquid Glass on macOS 26, or Classic", "Light and dark themes"]
+      ].map(([k, a, b]) => ({ k, a, b })),
       agents: [["Claude Code", RES("icClaude", "icons/claude-code.svg")], ["Codex", RES("icCodex", "icons/codex.svg")], ["Cursor", RES("icCursor", "icons/cursor-agent.svg")], ["Gemini", RES("icGemini", "icons/gemini.svg")], ["Amp", RES("icAmp", "icons/amp.svg")], ["OpenCode", RES("icOpencode", "icons/opencode.svg")]].map(([t, icon]) => ({ t, icon })),
       pains: [
         { before: "Six terminal tabs, and one of them has been waiting on you for 40 minutes.", after: "Every agent that needs you, in one place, answered in one keystroke." },
